@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+
+        <title>TFD</title>
+        <link type="css/text" rel="stylesheet" href="./resources/Tema_1.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+          </h:head>
+
+    <h:body>
+
+        <h:form>
+
+            <p:growl id="growl" showDetail="true" sticky="true" />   
+            <p:menubar>
+                <p:menuitem value="Login" icon="ui-icon-key"  url="Login1.xhtml"/>  
+                <p:submenu label="Cadastros" icon="ui-icon-pencil">  
+                    <p:menuitem value="Funcionario" url="CadastroFuncionario.xhtml" />                                       
+                </p:submenu>
+            </p:menubar>
+
+            <div id="content"> 
+                <p:messages id="global" />
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+
+        </h:form>          
+
+    </h:body>
+
+</html>
