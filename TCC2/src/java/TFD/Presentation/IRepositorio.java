@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 
-package TFD.Negocio;
+package TFD.Presentation;
+
+import java.util.List;
 
 /**
  *
  * @author Rosy
  */
-public interface Entidade {
-      public Long getId();
+interface IRepositorio<T> {
+     T Salvar(T obj);
+    boolean Apagar(T obj);
+    T Abrir(Long id);
+    List<T> Buscar(T obj);
 }

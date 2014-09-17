@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 
-package TFD.Entidade;
+package TFD.DomainModel;
 
 /**
  *
  * @author Rosy
  */
-public class Especialidade {
+public class Cidade {
+    
     private Long Id;
     private String Nome;
+    private String Estado;
 
     /**
      *
@@ -45,5 +47,22 @@ public class Especialidade {
     public void setNome(String Nome) {
         this.Nome = Nome;
     }
-  
+
+    /**
+     *
+     * @return
+     */
+    public String getEstado() {
+        return Estado;
+    }
+
+    /**
+     *
+     * @param Estado
+     */
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
+    
+    
 }

@@ -4,20 +4,16 @@
  * and open the template in the editor.
  */
 
-package TFD.Entidade;
+package TFD.DomainModel;
 
 /**
  *
  * @author Rosy
  */
-public class Paciente {
-    
+public class Carro {
     private Long Id;
     private String Nome;
-    private String Endereço;
-    private String Telefone;
-    private String Documento;
-    private String Sexo;
+    private int Tipo;
 
     /**
      *
@@ -55,64 +51,49 @@ public class Paciente {
      *
      * @return
      */
-    public String getEndereço() {
-        return Endereço;
+    public int getTipo() {
+        return Tipo;
     }
 
     /**
      *
-     * @param Endereço
+     * @param Tipo
      */
-    public void setEndereço(String Endereço) {
-        this.Endereço = Endereço;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getTelefone() {
-        return Telefone;
-    }
-
-    /**
-     *
-     * @param Telefone
-     */
-    public void setTelefone(String Telefone) {
-        this.Telefone = Telefone;
+    public void setTipo(int Tipo) {
+        this.Tipo = Tipo;
     }
 
     /**
      *
      * @return
      */
-    public String getDocumento() {
-        return Documento;
+    public int getVagas() {
+        return Vagas;
     }
 
     /**
      *
-     * @param Documento
+     * @param Vagas
      */
-    public void setDocumento(String Documento) {
-        this.Documento = Documento;
+    public void setVagas(int Vagas) {
+        this.Vagas = Vagas;
     }
 
     /**
      *
      * @return
      */
-    public String getSexo() {
-        return Sexo;
+    public int getPlca() {
+        return Plca;
     }
 
     /**
      *
-     * @param Sexo
+     * @param Plca
      */
-    public void setSexo(String Sexo) {
-        this.Sexo = Sexo;
+    public void setPlca(int Plca) {
+        this.Plca = Plca;
     }
-  
+    private int Vagas;
+    private int Plca;
 }

@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 
-package TFD.Entidade;
+package TFD.DomainModel;
 
 /**
  *
  * @author Rosy
  */
-public class Carro {
+public class Hospital {
+    
     private Long Id;
     private String Nome;
-    private int Tipo;
+    private String Endereço;
+    private String Telefone;
 
     /**
      *
@@ -51,49 +53,33 @@ public class Carro {
      *
      * @return
      */
-    public int getTipo() {
-        return Tipo;
+    public String getEndereço() {
+        return Endereço;
     }
 
     /**
      *
-     * @param Tipo
+     * @param Endereço
      */
-    public void setTipo(int Tipo) {
-        this.Tipo = Tipo;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getVagas() {
-        return Vagas;
-    }
-
-    /**
-     *
-     * @param Vagas
-     */
-    public void setVagas(int Vagas) {
-        this.Vagas = Vagas;
+    public void setEndereço(String Endereço) {
+        this.Endereço = Endereço;
     }
 
     /**
      *
      * @return
      */
-    public int getPlca() {
-        return Plca;
+    public String getTelefone() {
+        return Telefone;
     }
 
     /**
      *
-     * @param Plca
+     * @param Telefone
      */
-    public void setPlca(int Plca) {
-        this.Plca = Plca;
+    public void setTelefone(String Telefone) {
+        this.Telefone = Telefone;
     }
-    private int Vagas;
-    private int Plca;
+   
+    
 }

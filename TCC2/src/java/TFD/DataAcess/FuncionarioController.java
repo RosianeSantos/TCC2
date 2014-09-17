@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package TFD.Controller;
+package TFD.DataAcess;
 
-import TFD.Entidade.Funcionario;
-import TFD.Negocio.IFuncionarioRepositorio;
+import TFD.DomainModel.Funcionario;
+import TFD.Presentation.FuncionarioRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,8 +27,8 @@ public class FuncionarioController implements Serializable {
     Funcionario entidade;
     Funcionario filtro;
     List<Funcionario> listagem;
-    @EJB
-    IFuncionarioRepositorio dao;
+    
+    FuncionarioRepositorio dao;
     
 
     /**

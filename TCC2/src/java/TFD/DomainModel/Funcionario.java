@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package TFD.Entidade;
+package TFD.DomainModel;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -20,7 +20,7 @@ import javax.persistence.ManyToOne;
  * @author Rosy
  */
 @Entity
-public class Funcionario implements Serializable{
+public class Funcionario implements Entidade,  Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
