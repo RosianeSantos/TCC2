@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package TFD.DataAcess;
+package TFD.Presentation;
 
 import TFD.DomainModel.Funcionario;
-import TFD.Presentation.FuncionarioRepositorio;
+import TFD.DomainModel.FuncionarioRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,7 +27,7 @@ public class FuncionarioController implements Serializable {
     Funcionario entidade;
     Funcionario filtro;
     List<Funcionario> listagem;
-    
+    @EJB
     FuncionarioRepositorio dao;
     
 
@@ -41,7 +41,6 @@ public class FuncionarioController implements Serializable {
 
     /**
      *
-     * @param msg
      */
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -71,35 +70,23 @@ public class FuncionarioController implements Serializable {
 
     }
 
-    /**
-     *
-     * @return
-     */
+   
     public String editar() {
         return "FuncionarioEditar.xhtml";
     }
     
-    /**
-     *
-     * @return
-     */
+   
     public String novo(){
         return "FuncionarioEditar.xhtml";
     }
 
-    /**
-     *
-     * @return
-     */
+   
     public String criar() {
         entidade = new Funcionario();
         return "FuncionarioEditar.xhtml";
     }
 
-    /**
-     *
-     * @return
-     */
+   
     public String apagar() {
         dao.Apagar(entidade);
         listagem = null;
@@ -107,44 +94,27 @@ public class FuncionarioController implements Serializable {
         return "FuncionarioListagem.xhtml";
     }
 
-    /**
-     *
-     * @return
-     */
+  
     public String filtrar() {
         listagem = dao.Buscar(filtro);
         return "FuncionarioListagem.xhtml";
     }
 
-    /**
-     *
-     * @return
-     */
+    
     public String voltar() {
         listagem = null;
         return "FuncionarioListagem.xhtml";
     }
     
-    /**
-     *
-     * @return
-     */
+  
     public Funcionario getEntidade() {
         return entidade;
     }
 
-    /**
-     *
-     * @param entidade
-     */
     public void setEntidade(Funcionario entidade) {
         this.entidade = entidade;
     }
 
-    /**
-     *
-     * @return
-     */
     public List<Funcionario> getListagem() {
         if (listagem == null) {
             Funcionario filtro = new Funcionario();
@@ -153,38 +123,17 @@ public class FuncionarioController implements Serializable {
         return listagem;
     }
 
-    /**
-     *
-     * @param listagem
-     */
+  
     public void setListagem(List<Funcionario> listagem) {
         this.listagem = listagem;
     }
 
-    /**
-     *
-     * @return
-     */
     
-
-    /**
-     *
-     * @param listagemTipos
-     */
-   
-
-    /**
-     *
-     * @return
-     */
     public Funcionario getFiltro() {
         return filtro;
     }
 
-    /**
-     *
-     * @param filtro
-     */
+    
     public void setFiltro(Funcionario filtro) {
         this.filtro = filtro;
     }

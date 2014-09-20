@@ -7,11 +7,10 @@
 package TFD.DataAcess;
 
 import TFD.DomainModel.Repositorio;
-import TFD.Presentation.Entidade;
+import TFD.DomainModel.Entidade;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -19,21 +18,32 @@ import javax.persistence.PersistenceContext;
  *
  */
 public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> {
-    @PersistenceContext(name="TCC2PU")
+  
+    private static EntityManager gerenciadorEntidade = null;
+    
+    /**
+     * Metodo criado com a finalidade de retornar o gerenciador de entidade.
+     * @return um objeto do tipo EntityManager, Reponsal por gerenciar o Banco de dados.
+     */
+    public static EntityManager getGerenciadorEntidade(){
+        if (gerenciadorEntidade == null || !gerenciadorEntidade.isOpen()){
+            gerenciadorEntidade = Persistence.createEntityManagerFactory("TCC2PU").createEntityManager();
+        }
+        return gerenciadorEntidade;
+    }
+    
+    
+    
+   
     protected EntityManager manager;
     private Class tipo;
     public DAOGenerico (Class t) {
         tipo = t;
     }
     
+ 
     @Override
-    public T Refresh(Long id) {
-        manager.flush();
-        return (T) manager.getReference(tipo, id);
-    }
-    
-    @Override
-    public boolean Salvar(T obj) {
+    public T Salvar(T obj) {
         try{
             if(manager.contains(obj) || (obj.getId() != null && obj.getId() > 0)) {
                 obj = manager.merge(obj);
@@ -44,10 +54,10 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             
             manager.flush();
             
-            return true;
+        return obj;
         }catch (Exception ex){
         System.out.println(ex.getMessage());
-        return false;
+        return null;
         }
     }
     
@@ -77,4 +87,6 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             return false;
         }
     }
+    
 }
+

@@ -6,8 +6,10 @@
 
 package TFD.DataAcess;
 
+
 import TFD.DomainModel.Funcionario;
 import TFD.DomainModel.FuncionarioRepositorio;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -18,40 +20,88 @@ import javax.persistence.Query;
  */
 @Stateless(name = "FuncionarioRepositorio")
 public class FuncionarioDAO 
-
-    extends DAOGenerico<Funcionario>
-    implements FuncionarioRepositorio{
+        extends DAOGenerico<Funcionario>
+        implements FuncionarioRepositorio{
     
      public FuncionarioDAO() {
         super(Funcionario.class);
     }
 
-    public FuncionarioDAO(Class t) {
-        super(t);
-    }
+    
     @Override
     public List<Funcionario> Buscar(Funcionario obj) {
-        String sql = "select f from Funcionario f";
-        
-        String filtros = "";
-        
-        if(obj != null ){
-            if(obj.getId() != null && obj.getId() > 0 ){
-                filtros += "f.id = " + obj.getId();
+        // Corpo da consulta
+        String consulta = "select f from Funcionario f";
+
+        // A parte where da consulta
+        String filtro = "";
+
+        // Guarda a lista de parâmetros da query
+        HashMap<String, Object> parametros = new HashMap<String, Object>();
+
+        // Verifica campo por campo os valores que serão filtrados
+        if (obj != null) {
+            if (obj.getNome() != null && obj.getNome().length() > 0) {
+                filtro += " lower(f.nome) like lower('%" + obj.getNome() + "%')";                
             }
-            if(obj.getNome() != null){
-                if(filtros.length() > 0)
-                    filtros += " and ";
-                filtros += "f.nome like '%" + obj.getNome() + "%'"; 
+
+            if (obj.getLogin() != null && obj.getLogin().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro += " and ";
+                }
+                filtro += " f.login=:login ";
+                parametros.put("login", obj.getLogin());
             }
-    }
-         if(filtros.length() > 0){
-            sql += " where " + filtros;
+
+            if (obj.getId() != null && obj.getId() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " f.id =:id";
+                parametros.put("id", obj.getId());
+            }
+
+            if (obj.getSenha() != null && obj.getSenha().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " f.senha=:senha";
+                parametros.put("senha", obj.getSenha());
+            }
+
+           // Se houver filtros, coloca o "where" na consulta
+            if (filtro.length() > 0) {
+                consulta = consulta + " where " + filtro;
+            }
+        }
+
+        // Cria a consulta no JPA
+        Query query = manager.createQuery(consulta);
+
+        // Aplica os parâmetros da consulta
+        for (String par : parametros.keySet()) {
+            query.setParameter(par, parametros.get(par));
+        }
+
+        // Executa a consulta
+        return query.getResultList();
 
     }
-  
-         Query consulta = manager.createQuery(sql);
-        
-        return consulta.getResultList();
-}
+    
+   public Funcionario porLogin(String login){
+        String consulta = "select f from Funcionario f where f.login=:login";
+                // Cria a consulta no JPA
+        Query query = manager.createQuery(consulta);
+
+        // Aplica os parâmetros da consulta
+        query.setParameter("login", login);
+
+        // Executa a consulta
+        return (Funcionario)query.getSingleResult();
+
+
+    }
+
+    
+
 }

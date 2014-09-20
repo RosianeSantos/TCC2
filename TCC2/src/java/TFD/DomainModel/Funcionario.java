@@ -75,13 +75,16 @@ public class Funcionario implements Entidade,  Serializable{
     }
 
     @Override
-    public boolean equals(Object object) {
+     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Funcionario)) {
             return false;
         }
         Funcionario other = (Funcionario) object;
-        return (this.id != null || other.id == null) && (this.id == null || this.id.equals(other.id));
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override

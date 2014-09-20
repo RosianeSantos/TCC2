@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package TFD.Presentation;
+package TFD.DomainModel;
 
 import java.util.List;
 
