@@ -31,10 +31,7 @@ public class Funcionario implements Entidade,  Serializable{
     private String login;
     private String senha;
     
-    /**
-     *
-     * @return
-     */
+   
    public Long getId() {
         return id;
     }
@@ -69,19 +66,21 @@ public class Funcionario implements Entidade,  Serializable{
 
      @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+       int hash = 7;
+        hash = 17 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
     @Override
-     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Funcionario)) {
+      public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Funcionario other = (Funcionario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Funcionario other = (Funcionario) obj;
+        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -89,7 +88,7 @@ public class Funcionario implements Entidade,  Serializable{
 
     @Override
     public String toString() {
-        return nome;
+        return "Funcionario{" + "nome=" + nome + '}';
     }
     
   

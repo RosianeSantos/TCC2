@@ -9,12 +9,15 @@ package TFD.Presentation;
 import TFD.DomainModel.Funcionario;
 import TFD.DomainModel.FuncionarioRepositorio;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Named;
+import static javax.management.Query.value;
+import org.primefaces.component.autocomplete.AutoComplete;
 
 /**
  *
@@ -24,23 +27,21 @@ import javax.inject.Named;
 @SessionScoped
 public class FuncionarioConverter implements Serializable, Converter {
     
-    @EJB
-    FuncionarioRepositorio daoFuncionario;
-
+   
     /**
      * Creates a new instance of FuncionarioConverter
      */
     public FuncionarioConverter() {
     }
 
-    @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        if (value == null || value.trim().equals("")) {
-            return null;
-        } else {
-            Long id = Long.parseLong(value);
-            return daoFuncionario.Abrir(id);
-        }
+     @EJB
+    FuncionarioRepositorio daoFuncionario;
+
+  
+    public List<Funcionario> AutoCompleteFuncionario (String query){
+        Funcionario filtro = new Funcionario();
+        filtro.setNome(query);
+        return daoFuncionario.Buscar(filtro);
     }
 
     @Override
@@ -52,4 +53,15 @@ public class FuncionarioConverter implements Serializable, Converter {
           return f.getId().toString();
       } 
     }
+
+    @Override
+    public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        if (value == null || value.trim().equals("")){
+            return null;
+        }else{
+            Long id= Long.parseLong(value);
+            return daoFuncionario.Abrir(id);
+        }
+    }
+
 }
