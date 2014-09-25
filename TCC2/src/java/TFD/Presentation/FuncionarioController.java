@@ -28,7 +28,7 @@ public class FuncionarioController implements Serializable {
 
     Funcionario entidade;
     Funcionario filtro;
-    List<Funcionario> listagem;
+    List<Funcionario> lista;
     @EJB
     FuncionarioRepositorio dao;
     
@@ -67,23 +67,9 @@ public class FuncionarioController implements Serializable {
      *
      Criando o Metodo de salvar */
     public void salvar() {
-       /* if(entidade.getNome().trim().length() == 0){
-           exibirMensagem("Valor Inválido, preencha o campo: NOME com caracteres diferentes de espaço!");
-           return;
-        }
-         if(entidade.getLogin().trim().length() == 0){
-           exibirMensagem("Valor Inválido, preencha o campo: LOGIN com caracteres diferentes de espaço!");
-           return;
-        }
-          if(entidade.getSenha().trim().length() == 0){
-           exibirMensagem("Valor Inválido, preencha o campo: SENHA com caracteres diferentes de espaço!");
-           return;
-        }*/
-          
-        entidade = dao.Salvar(entidade);
-        listagem = null;
-        exibirMensagem("Sucesso!");
-
+        dao.Salvar(entidade);
+        lista = null;
+        exibirMensagem("Salvo!");
     }
 
    
@@ -105,20 +91,20 @@ public class FuncionarioController implements Serializable {
    
     public String apagar() {
         dao.Apagar(entidade);
-        listagem = null;
+        lista = null;
         exibirMensagem("Apagado com sucesso!");
         return "FuncionarioListagem.xhtml";
     }
 
   
     public String filtrar() {
-        listagem = dao.Buscar(filtro);
+        lista = dao.Buscar(filtro);
         return "FuncionarioListagem.xhtml";
     }
 
     
     public String voltar() {
-        listagem = null;
+        lista = null;
         return "FuncionarioListagem.xhtml";
     }
     
@@ -132,16 +118,16 @@ public class FuncionarioController implements Serializable {
     }
 
     public List<Funcionario> getListagem() {
-        if (listagem == null) {
+        if (lista == null) {
             Funcionario filtro = new Funcionario();
-            listagem = dao.Buscar(filtro);
+            lista = dao.Buscar(filtro);
         }
-        return listagem;
+        return lista;
     }
 
   
     public void setListagem(List<Funcionario> listagem) {
-        this.listagem = listagem;
+        this.lista = listagem;
     }
 
     

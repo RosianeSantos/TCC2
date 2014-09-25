@@ -7,6 +7,7 @@
 package TFD.DomainModel;
 
 import java.io.Serializable;
+import javax.management.Query;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,20 +25,19 @@ public class Funcionario implements Entidade,  Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idFuncionario;
     
-    @ManyToOne
+   
     private String nome;
     private String login;
     private String senha;
-    
-   
-   public Long getId() {
-        return id;
+
+    public Long getIdFuncionario() {
+        return idFuncionario;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdFuncionario(Long idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 
     public String getNome() {
@@ -64,15 +64,15 @@ public class Funcionario implements Entidade,  Serializable{
         this.senha = senha;
     }
 
-     @Override
+    @Override
     public int hashCode() {
-       int hash = 7;
-        hash = 17 * hash + (this.id != null ? this.id.hashCode() : 0);
+        int hash = 7;
+        hash = 17 * hash + (this.idFuncionario != null ? this.idFuncionario.hashCode() : 0);
         return hash;
     }
 
     @Override
-      public boolean equals(Object obj) {
+    public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -80,7 +80,7 @@ public class Funcionario implements Entidade,  Serializable{
             return false;
         }
         final Funcionario other = (Funcionario) obj;
-        if (this.id != other.id && (this.id == null || !this.id.equals(other.id))) {
+        if (this.idFuncionario != other.idFuncionario && (this.idFuncionario == null || !this.idFuncionario.equals(other.idFuncionario))) {
             return false;
         }
         return true;
@@ -90,6 +90,10 @@ public class Funcionario implements Entidade,  Serializable{
     public String toString() {
         return "Funcionario{" + "nome=" + nome + '}';
     }
-    
+
+    @Override
+    public Long getId() {
+        return null;
+    }
   
 }

@@ -10,6 +10,7 @@ import TFD.DomainModel.Repositorio;
 import TFD.DomainModel.Entidade;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
@@ -43,8 +44,8 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
     
  
     @Override
-    public T Salvar(T obj) {
-        try{
+    public boolean Salvar(T obj) {
+       try{
             if(manager.contains(obj) || (obj.getId() != null && obj.getId() > 0)) {
                 obj = manager.merge(obj);
             }
@@ -54,10 +55,10 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             
             manager.flush();
             
-        return obj;
+            return true;
         }catch (Exception ex){
         System.out.println(ex.getMessage());
-        return null;
+        return false;
         }
     }
     

@@ -53,12 +53,12 @@ public class FuncionarioDAO
                 parametros.put("login", obj.getLogin());
             }
 
-            if (obj.getId() != null && obj.getId() > 0) {
+            if (obj.getIdFuncionario()!= null && obj.getIdFuncionario()> 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.id =:id";
-                parametros.put("id", obj.getId());
+                filtro += " f.idFuncionario =:idFuncionario";
+                parametros.put("idFuncionario", obj.getIdFuncionario());
             }
 
             if (obj.getSenha() != null && obj.getSenha().length() > 0) {
@@ -100,6 +100,11 @@ public class FuncionarioDAO
         return (Funcionario)query.getSingleResult();
 
 
+    }
+
+    @Override
+    public Funcionario fazerLogin(String login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -50,7 +50,7 @@ public class FuncionarioConverter implements Serializable, Converter {
           return "";
       } else{
           Funcionario f = (Funcionario)value;
-          return f.getId().toString();
+          return f.getIdFuncionario().toString();
       } 
     }
 
