@@ -6,7 +6,6 @@
 
 package TFD.DomainModel;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
 
 /**
@@ -14,8 +13,6 @@ import javax.ejb.Remote;
  * @author Rosy
  */
 @Remote
-public interface FuncionarioRepositorio 
-     extends Repositorio<Funcionario>
-     {
-    /* public Funcionario fazerLogin(String login);*/
+public interface ICidadeRepositorio extends Repositorio<Cidade>{
+    
 }

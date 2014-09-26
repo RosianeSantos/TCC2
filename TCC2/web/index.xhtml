@@ -2,19 +2,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Facelet Title</title>
+        <title>TFD</title>
+        <link type="css/text" rel="stylesheet" href="./resources/Tema_1.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
     </h:head>
+    
+    
     <h:body>
       <ui:composition template="./Template.xhtml">
 
-            <ui:define name="content">
-                
-                <h1> Ola Mudo </h1>
-                <br />
+          <ui:define name="content">
+            
+                <p:tabView id="tblPaginaInicial">
+            
+                    <p:tab id="tabOquee" title="O que é o TFD?">
+                        <h:panelGrid columns="1" cellpadding="10">
+                            <h:outputText value="É um Programa do SUS, destinado às pessoas que necessitam de tratamento 
+                                          especializado não disponível na localidade de origem. ."/>
+                        </h:panelGrid>
+                    </p:tab>
+                    
+                </p:tabView>
+            
             </ui:define>
-
+            
         </ui:composition>
     </h:body>
 </html>

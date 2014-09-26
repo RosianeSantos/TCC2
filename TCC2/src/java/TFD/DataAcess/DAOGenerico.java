@@ -8,10 +8,13 @@ package TFD.DataAcess;
 
 import TFD.DomainModel.Repositorio;
 import TFD.DomainModel.Entidade;
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,22 +23,21 @@ import javax.persistence.Persistence;
  */
 public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> {
   
-    private static EntityManager gerenciadorEntidade = null;
+    Connection gerenciadorEntidade = null;
     
-    /**
-     * Metodo criado com a finalidade de retornar o gerenciador de entidade.
-     * @return um objeto do tipo EntityManager, Reponsal por gerenciar o Banco de dados.
-     */
-    public static EntityManager getGerenciadorEntidade(){
-        if (gerenciadorEntidade == null || !gerenciadorEntidade.isOpen()){
-            gerenciadorEntidade = Persistence.createEntityManagerFactory("TCC2PU").createEntityManager();
+    public  Connection conexion(){
+        
+        try {
+            
+                Class.forName("com.mysql.jdbc.Driver");
+                gerenciadorEntidade = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/tcc2?zeroDateTimeBehavior=convertToNull","root","1234");
+            
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error de Conexiao"+e);
         }
         return gerenciadorEntidade;
     }
     
-    
-    
-   
     protected EntityManager manager;
     private Class tipo;
     public DAOGenerico (Class t) {
@@ -88,6 +90,8 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
             return false;
         }
     }
+   
+    
     
 }
 

@@ -28,17 +28,49 @@ and open the template in the editor.
             <p:menubar>
                 <p:menuitem value="Login" icon="ui-icon-key"  url="Login1.xhtml"/>  
                 <p:submenu label="Cadastros" icon="ui-icon-pencil">  
-                    <p:menuitem value="Funcionario" url="CadastroFuncionario.xhtml" />                                       
+                    <p:menuitem value="Funcionario" url="CadastroFuncionario.xhtml" />  
+                    <p:menuitem value="Hospital" url="Hospital.xhtml"/>
+                     <p:menuitem value="Cidade" url="CadastroCidade.xhtml"/>
+                      <p:menuitem value="Estado" url="Estado.xhtml"/>
+                       <p:menuitem value="Especialidade" url="Especialidades.xhtml"/>
+                        <p:menuitem value="Paciente" url="Paciente.xhtml"/>
+                        <p:menuitem value="Carro" url="Paciente.xhtml"/>
+                        <p:menuitem value="Categoria Carro" url="Paciente.xhtml"/>
                 </p:submenu>
+                
+                  <p:submenu label="Listagem" icon="ui-icon-pencil">  
+                    <p:menuitem value="Funcionario" url="FuncaoListar.xhtml" />
+                    <p:menuitem value="Paciente" url="FuncionarioListar.xhtml" />
+                    <p:menuitem value="Hospital" url="CidadeOrigemListar.xhtml" />
+                    <p:menuitem value="Especialidade" url="TipoApartamentoListar.xhtml" />
+                    <p:menuitem value="Cidade" url="ServicoListar.xhtml" />
+                    <p:menuitem value="Estado" url="HospedagemLista.xhtml" />
+                    <p:menuitem value="Carro" url="HospedeListar.xhtml"  /> 
+                    <p:menuitem value="Categoria Carro" url="FilialListar.xhtml"  /> 
+                   
+                 </p:submenu>
+                
+                
+                
+                <p:submenu label="Relatórios" icon="ui-icon-note">
+                    <p:menuitem ajax="false" actionListener="#{funcaoController.XLS(actionEvent)}" value="Funcoes Cadastradas" />
+                </p:submenu>
+                
+                <p:submenu label="Logout" icon="ui-icon-note">
+                    <p:menuitem value="Logout" action="#{autenticacaoController.logout()}" />
+                    </p:submenu>
             </p:menubar>
+           
 
-            <div id="content"> 
-                <p:messages id="global" />
-                <ui:insert name="content">Content</ui:insert>
+            <div id="content" class="center_content">
+                <ui:insert name="content">Seja Bem vindo !!!! <br></br>
+                                        Para comecar a utilizar o sistema utilize o menu.</ui:insert>
             </div>
+        </h:form>
 
-        </h:form>          
+        <div id="bottom">
+            <center>Desenvolvido por: Rosiane dos Santos Nascimento </center>
+        </div>
 
     </h:body>
-
 </html>

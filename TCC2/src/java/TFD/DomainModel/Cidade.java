@@ -6,63 +6,51 @@
 
 package TFD.DomainModel;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author Rosy
  */
-public class Cidade {
-    
-    private Long Id;
+@Entity
+public class Cidade implements Serializable {
+     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idCidade;
     private String Nome;
     private String Estado;
 
-    /**
-     *
-     * @return
-     */
-    public Long getId() {
-        return Id;
+    public Long getIdCidade() {
+        return idCidade;
     }
 
-    /**
-     *
-     * @param Id
-     */
-    public void setId(Long Id) {
-        this.Id = Id;
+    public void setIdCidade(Long idCidade) {
+        this.idCidade = idCidade;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getNome() {
         return Nome;
     }
 
-    /**
-     *
-     * @param Nome
-     */
     public void setNome(String Nome) {
         this.Nome = Nome;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getEstado() {
         return Estado;
     }
 
-    /**
-     *
-     * @param Estado
-     */
     public void setEstado(String Estado) {
         this.Estado = Estado;
     }
+
+ 
+    
     
     
 }
