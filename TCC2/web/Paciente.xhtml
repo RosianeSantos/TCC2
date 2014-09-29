@@ -17,7 +17,10 @@ and open the template in the editor.
 
             <ui:define name="content">
                 <h:form>
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        PACIENTE  
+                    </f:facet>  
 
                        <h:outputLabel value="Nome*:" />                    
                         <p:inputText size="30" value="#{pacienteController.entidade.nome}" required="true" />
@@ -35,16 +38,21 @@ and open the template in the editor.
                         <p:inputText size="30" value="#{pacienteController.entidade.cep}" required="true" />
                         
                         <h:outputLabel value="Telefone Residencial:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.telefoneresindencial}" required="true" />
+                        <p:inputMask id="TelefoneResidencial" value="#{pacienteController.entidade.telefoneresindencial}"  mask="(999)999-9999" />
                         
                         <h:outputLabel value="Telefone Comercial:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.telefonecomercial}" required="true" />
+                        <p:inputMask id="TelefoneComercial" value="#{pacienteController.entidade.telefonecomercial}"  mask="(999)999-9999" />
                         
                         <h:outputLabel value="Telefone Celular:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.telefonecelular}" required="true" />
+                         <p:inputMask id="TelefoneCelular" value="#{pacienteController.entidade.telefonecelular}"  mask="(999)999-9999" />
                         
-                        <h:outputLabel value="Sexo*:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.sexo}" required="true" />
+                        Sexo*:<br/>
+                    <p:selectOneMenu value="#{pacienteController.entidade.sexo}" label="Estado"
+                                     required="true" >
+                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                        <f:selectItem itemLabel="Feminino" itemValue="F"/>
+                        <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                        </p:selectOneMenu>
                         
                         Tipo Documento*:<br/>
                     <p:selectOneMenu value="#{pacienteController.entidade.tipodedocumento}" label="Estado"

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+            
+            <ui:define name="content">
+                 <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        AGENDAMENTOS  
+                    </f:facet>  
+                    
+                    <h:outputLabel value="Funcionario*:" />
+                    <p:inputText value="${funcionarioController.filtro.nome}" />
+                        
+                    <h:outputLabel value="Paciente*:" />                    
+                     <p:inputText value="${pacienteController.filtro.nome}" />
+                        
+                    <h:outputLabel value="Hospital*:" />
+                     <p:inputText value="${hospitalController.filto.nome}" />                
+                   
+                     <h:outputLabel value="Cidade*:" />
+                     <p:inputText value="${cidadeController.filto.nome}" /> 
+                     
+                     <h:outputLabel value="Especialidade*:" />
+                     <p:inputText value="${especialidadeController.filto.nome}" /> 
+                     
+                     <h:outputLabel value="Hospital*:" />
+                     <p:inputText value="${hospitalController.filto.nome}" /> 
+                     
+                     <h:outputLabel  value="Data Encaminhamento:" />
+                     <p:calendar  value="#{calendarView.date9}" pattern="dd-MM-yyyy" required="true" />
+                     
+                      Finalidade*:<br/>
+                    <p:selectOneMenu value="#{finalidadeController.entidade.nome}" label="Finalidade"
+                                     required="true" >
+                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                        <f:selectItem itemLabel="Consulta" itemValue="Consulta"/>
+                       <f:selectItem itemLabel="Cirurgia" itemValue="Cirurgia"/>
+                        <f:selectItem itemLabel="Retorno" itemValue="Retorno"/>
+                    </p:selectOneMenu>
+                      
+                       <h:outputLabel value="Carro*:" />
+                     <p:inputText value="${carroController.filto.nome}" /> 
+                     
+                     Acompanhante*:<br/>
+                          <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                          <p:outputLabel for="acompanhante" value="" />
+                          <p:selectOneRadio id="acompanhante" value="#{radioView.console}">
+                              <f:selectItem itemLabel="Sim" itemValue="Sim" />
+                              <f:selectItem itemLabel="Não" itemValue="Não" />
+                              
+                          </p:selectOneRadio>
+                      </h:panelGrid>
+                            
+                             Situação*:<br/>
+                    <p:selectOneMenu value="#{situaçãoController.entidade.nome}" label="Situação"
+                                     required="true" >
+                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                        <f:selectItem itemLabel="Andamento" itemValue="Andamento"/>
+                       <f:selectItem itemLabel="Concluido" itemValue="Concluido"/>
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+                <br/>
+                (*) Campos de Preenchimento Obrigatorio
+                <br/><br/>
+                <p:panel id="Rodape">
+                    <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                    <p:commandButton value="Remover" rendered="#{funcionarioController.entidade.id > 0}" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${funcionarioController.voltar()}" />
+                </p:panel>       
+                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgSalvar">
+                    <p:commandButton ajax="false" value="SIM" action="${funcionarioController.salvar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                </p:confirmDialog>
+
+                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgRemover">
+                    <p:commandButton ajax="false" value="SIM" action="${funcionarioController.apagar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                </p:confirmDialog>  
+            </ui:define>
+                
+        </ui:composition>
+            
+    </body>
+</html>

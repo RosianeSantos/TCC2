@@ -17,18 +17,21 @@ and open the template in the editor.
 
             <ui:define name="content">
                 <h:form>
-                    <h:panelGrid columns="2">
+                    <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        HOSPITAL 
+                    </f:facet>  
 
                        <h:outputLabel value="Nome*:" />                    
                         <p:inputText size="30" value="#{hospitalController.entidade.nome}" required="true" />
                          <h:outputLabel value="Endereco*:" />                    
                         <p:inputText size="30" value="#{hospitalController.entidade.endereco}" required="true" />
                          <h:outputLabel value="Telefone 1:" />                    
-                        <p:inputText size="30" value="#{hospitalController.entidade.telefone1}" required="true" />
+                         <p:inputMask  id="Telefone1" value="#{hospitalController.entidade.telefone1}"  mask="(999)999-9999"/>
                          <h:outputLabel value="Telefone 2:" />                    
-                        <p:inputText size="30" value="#{hospitalController.entidade.telefone2}" required="true" />
+                        <p:inputMask  id="Telefone2" value="#{hospitalController.entidade.telefone2}"  mask="(999)999-9999"/>
                          <h:outputLabel value="Telefone 3:" />                    
-                        <p:inputText size="30" value="#{hospitalController.entidade.telefone3}" required="true" />
+                        <p:inputMask  id="Telefone3" value="#{hospitalController.entidade.telefone3}"  mask="(999)999-9999"/>
                       
 
                         (*) Campos de Preenchimento Obrigatório

@@ -17,7 +17,12 @@ and open the template in the editor.
             
             <ui:define name="content">
                 
-                <h:panelGrid columns="2">
+                <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        CIDADE
+                    </f:facet>  
+                    
+                    
                     <h:outputLabel value="ID Cidade:" />
                     <p:inputText value="#{cidadeOrigemController.entidade.idCidade}" required="true"/> 
                     

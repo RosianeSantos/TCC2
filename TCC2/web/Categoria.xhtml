@@ -18,18 +18,16 @@ and open the template in the editor.
             <ui:define name="content">
                 <h:panelGrid columns="2">  
                     <f:facet name="header">  
-                        FUNCIONARIOS 
+                        CATEGORIA  
                     </f:facet>  
                     
                     <h:outputLabel value="Nome*:" />
-                    <p:inputText size="35" value="${funcionarioController.entidade.nome}" required="true" />
+                    <p:inputText size="35" value="${categoriaController.entidade.nome}" required="true" />
                         
-                    <h:outputLabel value="Login*:" />                    
-                    <p:inputText size="35" value="${funcionarioController.entidade.login}" required="true" />
+                    <h:outputLabel value="Quantidades Maxima Pessoa*:" />                    
+                    <p:inputText size="35" value="${quantidadeMaximaController.entidade.quantidadeMaxima}" required="true" />
                         
-                    <h:outputLabel value="Senha*:" />
-                    <p:password label="senha" size="26" value="${funcionarioController.entidade.senha}" required="true" />                   
-                   
+                    
 
                 </h:panelGrid>
                 <br/>
@@ -37,21 +35,23 @@ and open the template in the editor.
                 <br/><br/>
                 <p:panel id="Rodape">
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                    <p:commandButton value="Remover" rendered="#{funcionarioController.entidade.id > 0}" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${funcionarioController.voltar()}" />
+                    <p:commandButton value="Remover" rendered="#{categoriaController.entidade.id > 0}" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${gategoriaController.voltar()}" />
                 </p:panel>       
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">
-                    <p:commandButton ajax="false" value="SIM" action="${funcionarioController.salvar()}" />
+                    <p:commandButton ajax="false" value="SIM" action="${categoriaController.salvar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
                 </p:confirmDialog>
 
                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgRemover">
-                    <p:commandButton ajax="false" value="SIM" action="${funcionarioController.apagar()}" />
+                    <p:commandButton ajax="false" value="SIM" action="${categoriaController.apagar()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
 
                 </p:confirmDialog>  
+                
+                            
             </ui:define>
                 
         </ui:composition>

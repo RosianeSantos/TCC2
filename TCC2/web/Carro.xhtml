@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        
+        <ui:composition template="./Template.xhtml">
+            
+            <ui:define name="content">
+                
+                <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        CARRO  
+                    </f:facet>  
+                    
+                    
+                    <h:outputLabel value="ID Carro:" />
+                    <p:inputText value="#{carroController.entidade.idCarro}" required="true"/> 
+                    
+                    <h:outputLabel value="Modelo:" />
+                    <p:inputText value="#{carroController.entidade.nome}" required="true"/>
+                        
+                    Categoria*:<br/>
+                    <p:selectOneMenu value="#{categoriaController.entidade.categoria}" label="Categoria"
+                                     required="true" >
+                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                        <f:selectItem itemLabel="Hatches" itemValue="Hatches"/>
+                        <f:selectItem itemLabel="Sedãs" itemValue="Sedãs"/>
+                         <f:selectItem itemLabel="Picapes" itemValue="Picapes"/>
+                          <f:selectItem itemLabel="Familiares" itemValue="Familiares"/>
+                           <f:selectItem itemLabel="Suvs" itemValue="Suvs"/>
+                            <f:selectItem itemLabel="Cupês" itemValue="Cupês"/>
+                             <f:selectItem itemLabel="Vans" itemValue="Vans"/>
+                      
+                    
+                    </p:selectOneMenu>
+                            
+                    <h:outputLabel value="Quantidade Pessoas:" />
+                    <p:inputText value="#{quantidadeController.entidade.quantidade}" required="true"/>
+                    
+                    <h:outputLabel value="Placa:" />
+                    <p:inputText value="#{placaController.entidade.placa}" required="true"/>
+                    
+                </h:panelGrid>
+                <br/>
+                (*) Campos de Preenchimento Obrigatório
+               
+                    <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                    <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${carroController.voltar()}" />
+                   
+                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgSalvar">
+                    <p:commandButton ajax="false" value="SIM" action="${carroController.salvar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                </p:confirmDialog>
+                    
+                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                                 severity="alert" widgetVar="msgRemover">
+                    <p:commandButton ajax="false" value="SIM" action="${carroController.apagar()}" />
+                    <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+                        
+                </p:confirmDialog>                
+            </ui:define>
+        </ui:composition>
+            
+            
+    </body>
+</html>
