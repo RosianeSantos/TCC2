@@ -29,6 +29,7 @@ public class FuncionarioController implements Serializable {
     Funcionario entidade;
     Funcionario filtro;
     List<Funcionario> lista;
+
     @EJB
     FuncionarioRepositorio dao;
     
