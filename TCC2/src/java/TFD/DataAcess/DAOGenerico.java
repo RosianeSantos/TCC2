@@ -25,19 +25,9 @@ import javax.swing.JOptionPane;
 public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> {
   
     @PersistenceContext(name = "TCC2PU")
-    private EntityManager gerenciadorEntidade;
-    
-    /**
-     * Metodo criado com a finalidade de retornar o gerenciador de entidade.
-     * @return um objeto do tipo EntityManager, Reponsal por gerenciar o Banco de dados.
-     */
-    public EntityManager getGerenciadorEntidade(){
-        return gerenciadorEntidade;
-    }
-
-  
-
     protected EntityManager manager;
+    
+    
     private Class tipo;
     public DAOGenerico (Class t) {
         tipo = t;
