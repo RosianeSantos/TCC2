@@ -6,14 +6,15 @@
 
 package TFD.Presentation;
 
-import TFD.DomainModel.Cidade;
-import TFD.DomainModel.ICidadeRepositorio;
+
+import TFD.DomainModel.Funcionario;
+import TFD.DomainModel.Hospital;
+import TFD.DomainModel.HospitalRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
@@ -23,25 +24,25 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "cidadeOrigemController")
+@Named(value = "hospitalController")
 @SessionScoped
-public class CidadeOrigemController implements Serializable{
-    Cidade entidade;
-    Cidade filtro;
-    List<Cidade> lista;
-   
+public class HospitalController implements Serializable {
+
+    Hospital entidade;
+    Hospital filtro;
+    List<Hospital> lista;
+
     @EJB
-    ICidadeRepositorio dao;
-
-    /**
-* Creates a new instance of CidadeOrigemController
-*/
-    public CidadeOrigemController() {
-        entidade = new Cidade();
-        filtro = new Cidade();
+    HospitalRepositorio dao;
+    
+    
+     public HospitalController() {
+        entidade = new Hospital();
+        filtro = new Hospital();
     }
-
-    public void validarEspacoEmBranco(FacesContext contexto, UIComponent componente, Object valor) {
+     
+     
+      public void validarEspacoEmBranco(FacesContext contexto, UIComponent componente, Object valor) {
         String valorString = (String) valor;
         if (valorString.trim().equals("")) {
             ((UIInput) componente).setValid(false);
@@ -52,70 +53,87 @@ public class CidadeOrigemController implements Serializable{
         }
 
     }
-
-    public void exibirMensagem(String msg) {
+      
+      
+       public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
-    }
+    } 
 
+    /**
+     *
+     Criando o Metodo de salvar */
     public void salvar() {
         dao.Salvar(entidade);
         lista = null;
         exibirMensagem("Salvo!");
     }
 
+   
     public String editar() {
-        return "CadastroCidade.xhtml";
+        return "HospitalEditar.xhtml";
+    }
+    
+   
+    public String novo(){
+        return "HospitalEditar.xhtml";
     }
 
+   
     public String criar() {
-        entidade = new Cidade();
-        return "CadastroCidade.xhtml";
+        entidade = new Hospital();
+        return "HospitalEditar.xhtml";
     }
 
+   
     public String apagar() {
         dao.Apagar(entidade);
         lista = null;
-        exibirMensagem("Pronto Apagado com sucesso!");
-        return "CadastroCidadeListar.xhtml";
+        exibirMensagem("Apagado com sucesso!");
+        return "HospitalListagem.xhtml";
     }
 
+  
     public String filtrar() {
         lista = dao.Buscar(filtro);
-        return "CadastroCidadeListar";
+        return "HospitalListagem.xhtml";
     }
 
+    
     public String voltar() {
-        lista =null;
-        return "CadastroCidadeListar.xhtml";
+        lista = null;
+        return "HospitalListagem.xhtml";
     }
-
-    public Cidade getEntidade() {
+    
+  
+    public Hospital getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Cidade entidade) {
+    public void setEntidade(Hospital entidade) {
         this.entidade = entidade;
     }
 
-    public List<Cidade> getLista() {
+    public List<Hospital> getListagem() {
         if (lista == null) {
-            Cidade filtro = new Cidade();
+            Hospital filtro = new Hospital();
             lista = dao.Buscar(filtro);
         }
         return lista;
     }
 
-    public void setLista(List<Cidade> listagem) {
+  
+    public void setListagem(List<Hospital> listagem) {
         this.lista = listagem;
     }
 
-    public Cidade getFiltro() {
+    
+    public Hospital getFiltro() {
         return filtro;
     }
 
-    public void setFiltro(Cidade filtro) {
+    
+    public void setFiltro(Hospital filtro) {
         this.filtro = filtro;
     }
-    
 }

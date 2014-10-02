@@ -17,13 +17,14 @@ import javax.persistence.Id;
  * @author Rosy
  */
 @Entity
-public class Cidade implements Serializable {
+public class Cidade implements Entidade, Serializable {
      private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCidade;
-    private String Nome;
-    private String Estado;
+    
+    private String nome;
+    private String estado;
 
     public Long getIdCidade() {
         return idCidade;
@@ -34,19 +35,26 @@ public class Cidade implements Serializable {
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
-    public void setEstado(String Estado) {
-        this.Estado = Estado;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+   
+
+    @Override
+    public Long getId() {
+        return null;
     }
 
  

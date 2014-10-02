@@ -7,27 +7,23 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
-        
+
         <ui:composition template="./Template.xhtml">
-            
+
             <ui:define name="content">
-                
-                <h:panelGrid columns="2">  
+                <h:form>
+                    <h:panelGrid columns="2">  
                     <f:facet name="header">  
                         CIDADE
                     </f:facet>  
-                    
-                    
-                    <h:outputLabel value="ID Cidade:" />
-                    <p:inputText value="#{cidadeOrigemController.entidade.idCidade}" required="true"/> 
-                    
-                    <h:outputLabel value="Cidade:" />
-                    <p:inputText value="#{cidadeOrigemController.entidade.nome}" required="true"/>
+
+                       <h:outputLabel value="Nome*:" />                    
+                       <p:inputText size="30" value="#{cidadeOrigemController.entidade.nome}" required="true" />
                         
                     Estado*:<br/>
                     <p:selectOneMenu value="#{cidadeOrigemController.entidade.estado}" label="Estado"
@@ -62,29 +58,33 @@ and open the template in the editor.
                         <f:selectItem itemLabel="TO" itemValue="TO"/>
                     </p:selectOneMenu>
                             
-                </h:panelGrid>
-                <br/>
                 (*) Campos de Preenchimento Obrigatório
-               
-                    <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                    <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${cidadeOrigemController.voltar()}" />
-                   
-                <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
-                                 severity="alert" widgetVar="msgSalvar">
-                    <p:commandButton ajax="false" value="SIM" action="${cidadeOrigemController.salvar()}" />
-                    <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
-                </p:confirmDialog>
-                    
-                <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
-                                 severity="alert" widgetVar="msgRemover">
-                    <p:commandButton ajax="false" value="SIM" action="${cidadeOrigemController.apagar()}" />
-                    <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
-                        
-                </p:confirmDialog>                
+
+
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${cidadeOrigemController.voltar()}" />
+
+                        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgSalvar">
+                            <p:commandButton ajax="false" value="SIM" action="#{cidadeOrigemController.salvar()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                        </p:confirmDialog>
+
+                        <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgRemover">
+                            <p:commandButton ajax="false" value="SIM" action="${cidadeOrigemController.apagar()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                        </p:confirmDialog>  
+
+
+
+                    </h:panelGrid>
+
+                </h:form>
             </ui:define>
         </ui:composition>
-            
-            
+
     </body>
 </html>
