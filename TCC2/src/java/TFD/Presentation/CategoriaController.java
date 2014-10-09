@@ -6,8 +6,9 @@
 
 package TFD.Presentation;
 
-import TFD.DomainModel.Cidade;
-import TFD.DomainModel.ICidadeRepositorio;
+
+import TFD.DomainModel.Categoria;
+import TFD.DomainModel.CategoriaRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -18,36 +19,29 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-
 /**
  *
  * @author Rosy
  */
-@Named(value = "cidadeOrigemController")
+@Named(value = "categoriaController")
 @SessionScoped
-public class CidadeOrigemController implements Serializable{
-   
-    Cidade entidade;
-    Cidade filtro;
-    List<Cidade> lista;
+public class CategoriaController implements Serializable{
+    
+    Categoria entidade;
+    Categoria filtro;
+    List<Categoria> lista;
 
     @EJB
-    ICidadeRepositorio dao;
+    CategoriaRepositorio dao;
     
-
-    /**
-     * Creates a new instance of FuncionarioController
-     */
-    public CidadeOrigemController() {
-        entidade = new Cidade();
-        filtro = new Cidade();
+    
+    public CategoriaController() {
+        entidade = new Categoria();
+        filtro = new Categoria();
     }
-
-    /**
-     *
-     */
     
-     public void validarEspacoEmBranco(FacesContext contexto, UIComponent componente, Object valor) {
+    
+    public void validarEspacoEmBranco(FacesContext contexto, UIComponent componente, Object valor) {
         String valorString = (String) valor;
         if (valorString.trim().equals("")) {
             ((UIInput) componente).setValid(false);
@@ -56,10 +50,9 @@ public class CidadeOrigemController implements Serializable{
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
             contexto.addMessage(componente.getClientId(contexto), facesMessage);
         }
-
-    }
+}
     
-    
+ 
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
@@ -73,21 +66,21 @@ public class CidadeOrigemController implements Serializable{
         lista = null;
         exibirMensagem("Salvo!");
     }
-
-   
-    public String editar() {
-        return "CidadeEditar.xhtml";
+    
+    
+     public String editar() {
+        return "CategoriaEditar.xhtml";
     }
     
    
     public String novo(){
-        return "CidadeEditar.xhtml";
+        return "CategoriaEditar.xhtml";
     }
 
    
     public String criar() {
-        entidade = new Cidade();
-        return "CidadeEditar.xhtml";
+        entidade = new Categoria();
+        return "CategoriaEditar.xhtml";
     }
 
    
@@ -95,50 +88,51 @@ public class CidadeOrigemController implements Serializable{
         dao.Apagar(entidade);
         lista = null;
         exibirMensagem("Apagado com sucesso!");
-        return "CidadeListagem.xhtml";
+        return "CategoriaListagem.xhtml";
     }
 
   
     public String filtrar() {
         lista = dao.Buscar(filtro);
-        return "CidadeListagem.xhtml";
+        return "CategoriaListagem.xhtml";
     }
 
     
     public String voltar() {
         lista = null;
-        return "CidadeListagem.xhtml";
+        return "CategoriaListagem.xhtml";
     }
     
   
-    public Cidade getEntidade() {
+    public Categoria getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Cidade entidade) {
+    public void setEntidade(Categoria entidade) {
         this.entidade = entidade;
     }
 
-    public List<Cidade> getListagem() {
+    public List<Categoria> getListagem() {
         if (lista == null) {
-            Cidade filtro = new Cidade();
+            Categoria filtro = new Categoria();
             lista = dao.Buscar(filtro);
         }
         return lista;
     }
 
   
-    public void setListagem(List<Cidade> listagem) {
+    public void setListagem(List<Categoria> listagem) {
         this.lista = listagem;
     }
 
     
-    public Cidade getFiltro() {
+    public Categoria getFiltro() {
         return filtro;
     }
 
     
-    public void setFiltro(Cidade filtro) {
+    public void setFiltro(Categoria filtro) {
         this.filtro = filtro;
     }
+    
 }

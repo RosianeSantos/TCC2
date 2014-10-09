@@ -6,8 +6,9 @@
 
 package TFD.Presentation;
 
-import TFD.DomainModel.Funcionario;
-import TFD.DomainModel.FuncionarioRepositorio;
+
+import TFD.DomainModel.Categoria;
+import TFD.DomainModel.CategoriaRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -21,45 +22,48 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "funcionarioConverter")
+@Named(value = "categoriaConverter")
 @SessionScoped
-public class FuncionarioConverter implements Serializable, Converter {
+public class CategoriaConverter implements Serializable, Converter{
     
-   
-    /**
-     * Creates a new instance of FuncionarioConverter
-     */
-    public FuncionarioConverter() {
+    
+     public CategoriaConverter() {
     }
 
      @EJB
-    FuncionarioRepositorio daoFuncionario;
-
-  
-    public List<Funcionario> AutoCompleteFuncionario (String query){
-        Funcionario filtro = new Funcionario();
+     CategoriaRepositorio daoCategoria;
+     
+     
+     
+      public List<Categoria> AutoCompleteCategorias (String query){
+        Categoria filtro = new Categoria();
         filtro.setNome(query);
-        return daoFuncionario.Buscar(filtro);
+        return daoCategoria.Buscar(filtro);
     }
 
+   
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
       if (value == null || value.toString().equals("")){
           return "";
       } else{
-          Funcionario f = (Funcionario)value;
-          return f.getIdFuncionario().toString();
+          Categoria c = (Categoria)value;
+          return c.getIdCategoria().toString();
       } 
     }
-
+    
+    
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if (value == null || value.trim().equals("")){
             return null;
         }else{
             Long id= Long.parseLong(value);
-            return daoFuncionario.Abrir(id);
+            return daoCategoria.Abrir(id);
         }
     }
 
+    
+  
+    
 }

@@ -7,8 +7,6 @@
 package TFD.Presentation;
 
 import TFD.DomainModel.Cidade;
-import TFD.DomainModel.Funcionario;
-import TFD.DomainModel.FuncionarioRepositorio;
 import TFD.DomainModel.ICidadeRepositorio;
 import java.io.Serializable;
 import java.util.List;

@@ -28,7 +28,7 @@ and open the template in the editor.
                      <p:inputText value="${pacienteController.filtro.nome}" />
                         
                     <h:outputLabel value="Hospital*:" />
-                     <p:inputText value="${hospitalController.filto.nome}" />                
+                     <p:inputText value="" />                
                    
                      <h:outputLabel value="Cidade*:" />
                      <p:inputText value="${cidadeController.filto.nome}" /> 
@@ -36,8 +36,6 @@ and open the template in the editor.
                      <h:outputLabel value="Especialidade*:" />
                      <p:inputText value="${especialidadeController.filto.nome}" /> 
                      
-                     <h:outputLabel value="Hospital*:" />
-                     <p:inputText value="${hospitalController.filto.nome}" /> 
                      
                      <h:outputLabel  value="Data Encaminhamento:" />
                      <p:calendar  value="#{calendarView.date9}" pattern="dd-MM-yyyy" required="true" />

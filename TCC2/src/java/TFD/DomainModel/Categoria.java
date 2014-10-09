@@ -17,21 +17,24 @@ import javax.persistence.Id;
  * @author Rosy
  */
 @Entity
-public class Cidade implements Entidade, Serializable {
-     private static final long serialVersionUID = 1L;
+public class Categoria implements Entidade, Serializable{
+    
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idCidade;
+    private Long idCategoria;
     
     private String nome;
-    private String estado;
+    private String quantidade;
 
-    public Long getIdCidade() {
-        return idCidade;
+    
+    
+    public Long getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setIdCidade(Long idCidade) {
-        this.idCidade = idCidade;
+    public void setIdCategoria(Long idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public String getNome() {
@@ -42,25 +45,16 @@ public class Cidade implements Entidade, Serializable {
         this.nome = nome;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getQuantidade() {
+        return quantidade;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
     }
-
-   
-
+    
     
      @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + (this.idCidade != null ? this.idCidade.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -68,8 +62,8 @@ public class Cidade implements Entidade, Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Cidade other = (Cidade) obj;
-        if (this.idCidade != other.idCidade && (this.idCidade == null || !this.idCidade.equals(other.idCidade))) {
+        final Categoria other = (Categoria) obj;
+        if (this.idCategoria != other.idCategoria && (this.idCategoria == null || !this.idCategoria.equals(other.idCategoria))) {
             return false;
         }
         return true;
@@ -77,17 +71,14 @@ public class Cidade implements Entidade, Serializable {
 
     @Override
     public String toString() {
-        return "Cidade{" + "nome=" + nome + '}';
+        return "Categoria{" + "nome=" + nome + '}';
     }
-    
-    
-    
+
     @Override
     public Long getId() {
         return null;
     }
-
- 
+  
     
     
     

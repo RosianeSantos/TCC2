@@ -13,8 +13,6 @@ import javax.ejb.Remote;
  * @author Rosy
  */
 @Remote
-public interface FuncionarioRepositorio 
-     extends Repositorio<Funcionario>
-     {
-    /* public Funcionario fazerLogin(String login);*/
+public interface CategoriaRepositorio extends Repositorio<Categoria>{
+    
 }

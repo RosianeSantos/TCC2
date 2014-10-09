@@ -6,8 +6,8 @@
 
 package TFD.DataAcess;
 
-import TFD.DomainModel.Cidade;
-import TFD.DomainModel.ICidadeRepositorio;
+import TFD.DomainModel.Categoria;
+import TFD.DomainModel.CategoriaRepositorio;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,20 +17,19 @@ import javax.persistence.Query;
  *
  * @author Rosy
  */
-@Stateless(name = "ICidadeRepositorio")
-public class CidadeDAO 
-        extends DAOGenerico<Cidade>
-        implements ICidadeRepositorio{
+@Stateless(name = "CategoriaRepositorio")
+public class CategoriaDAO extends DAOGenerico<Categoria>
+        implements CategoriaRepositorio{
     
-    public CidadeDAO() {
-        super(Cidade.class);
+    public CategoriaDAO() {
+        super(Categoria.class);
     }
-    
+
     
     @Override
-    public List<Cidade> Buscar(Cidade obj) {
+    public List<Categoria> Buscar(Categoria obj) {
         // Corpo da consulta
-        String consulta = "select c from Cidade c";
+        String consulta = "select c from Categoria c";
 
         // A parte where da consulta
         String filtro = "";
@@ -44,23 +43,29 @@ public class CidadeDAO
                 filtro += " lower(c.nome) like lower('%" + obj.getNome() + "%')";                
             }
 
-            if (obj.getEstado()!= null && obj.getEstado().length() > 0) {
+            if (obj.getNome()!= null && obj.getNome().length() > 0) {
                 if (filtro.length() > 0) {
                     filtro += " and ";
                 }
-                filtro += " c.estado=:estado ";
-                parametros.put("estado", obj.getEstado());
+                filtro += " c.nome=:nome ";
+                parametros.put("nome", obj.getNome());
             }
 
-            if (obj.getIdCidade()!= null && obj.getIdCidade()> 0) {
+            if (obj.getIdCategoria()!= null && obj.getIdCategoria()> 0) {
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " c.idCidade =:idCidade";
-                parametros.put("idCidade", obj.getIdCidade());
+                filtro += " c.idCategoria =:idCategoria";
+                parametros.put("idCategoria", obj.getIdCategoria());
             }
 
-            
+            if (obj.getQuantidade() != null && obj.getQuantidade().length() > 0) {
+                if (filtro.length() > 0) {
+                    filtro = filtro + " and ";
+                }
+                filtro += " c.quantidade=:quantidade";
+                parametros.put("quantidade", obj.getQuantidade());
+            }
 
            // Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
@@ -81,6 +86,7 @@ public class CidadeDAO
 
     }
     
-  
+   
+
     
 }
