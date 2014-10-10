@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:stella="http://stella.caelum.com.br/faces">
 
     <body>
 
@@ -23,28 +24,28 @@ and open the template in the editor.
                     </f:facet>  
 
                        <h:outputLabel value="Nome*:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.nome}" required="true" />
+                       <p:inputText size="30" value="#{pacienteController.entidade.nome}" required="true" />
                         
                          <h:outputLabel value="Endereco*:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.endereco}" required="true" />
+                         <p:inputText size="30" value="#{pacienteController.entidade.endereco}" required="true" />
                         
                          <h:outputLabel value="Complemento:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.complemento}" required="true" />
+                         <p:inputText size="30" value="#{pacienteController.entidade.complemento}" required="true" />
                         
                          <h:outputLabel value="Numero:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.numero}" required="true" />
+                         <p:inputText size="30" value="#{pacienteController.entidade.numero}" required="true" />
                         
                          <h:outputLabel value="Cep*:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.cep}" required="true" />
+                         <p:inputText size="30" value="#{pacienteController.entidade.cep}" required="true" />
                         
                         <h:outputLabel value="Telefone Residencial:" />                    
-                        <p:inputMask id="TelefoneResidencial" value="#{pacienteController.entidade.telefoneresindencial}"  mask="(999)999-9999" />
+                        <p:inputMask id="TelefoneResidencial" value="#{pacienteController.entidade.telefoneR}"  mask="(999)999-9999" />
                         
                         <h:outputLabel value="Telefone Comercial:" />                    
-                        <p:inputMask id="TelefoneComercial" value="#{pacienteController.entidade.telefonecomercial}"  mask="(999)999-9999" />
+                        <p:inputMask id="TelefoneComercial" value="#{pacienteController.entidade.telefoneC}"  mask="(999)999-9999" />
                         
                         <h:outputLabel value="Telefone Celular:" />                    
-                         <p:inputMask id="TelefoneCelular" value="#{pacienteController.entidade.telefonecelular}"  mask="(999)999-9999" />
+                        <p:inputMask id="TelefoneCelular" value="#{pacienteController.entidade.telefoneCelular}"  mask="(999)999-9999" />
                         
                         Sexo*:<br/>
                     <p:selectOneMenu value="#{pacienteController.entidade.sexo}" label="Estado"
@@ -54,16 +55,16 @@ and open the template in the editor.
                         <f:selectItem itemLabel="Masculino" itemValue="M"/>
                         </p:selectOneMenu>
                         
-                        Tipo Documento*:<br/>
-                    <p:selectOneMenu value="#{pacienteController.entidade.tipodedocumento}" label="Estado"
-                                     required="true" >
-                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
-                        <f:selectItem itemLabel="RG" itemValue="RG"/>
-                        <f:selectItem itemLabel="CPF" itemValue="CPF"/>
-                        </p:selectOneMenu>
-                        
-                        <h:outputLabel value="Numero Documento*:" />                    
-                        <p:inputText size="30" value="#{pacienteController.entidade.numerodocumento}" required="true" />
+                    <h:outputLabel value="CPF*:" />                    
+                    <p:inputText size="35" value="${pacienteController.entidade.cpf}" required="true" 
+                                 requiredMessage="O campo cpf é de preenchimento obrigatório!" title="Nome" validator="#{pacienteController.validacpf}">
+                                         
+                               
+                     </p:inputText>
+                    
+                    
+                       <h:outputLabel value="RG*:" />                    
+                        <p:inputText size="30" value="#{pacienteController.entidade.rg}" required="true" />
                         
                       
 

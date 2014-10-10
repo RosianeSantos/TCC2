@@ -6,113 +6,139 @@
 
 package TFD.DomainModel;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 /**
  *
  * @author Rosy
  */
-public class Paciente {
+@Entity
+public class Paciente implements Entidade,  Serializable {
     
-    private Long Id;
-    private String Nome;
-    private String Endereço;
-    private String Telefone;
-    private String Documento;
-    private String Sexo;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idPaciente;
+    
+    private String nome;
+    private String endereco;
+    private String complemento;
+    private String numero;
+    private String cep;
+    private String telefoneR;
+    private String telefoneC;
+    private String telefoneCelular;
+    private String sexo;
+    private String rg;
+    private String cpf;
 
-    /**
-     *
-     * @return
-     */
-    public Long getId() {
-        return Id;
+    
+    
+    public Long getIdPaciente() {
+        return idPaciente;
     }
 
-    /**
-     *
-     * @param Id
-     */
-    public void setId(Long Id) {
-        this.Id = Id;
+    public void setIdPaciente(Long idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
-    /**
-     *
-     * @param Nome
-     */
-    public void setNome(String Nome) {
-        this.Nome = Nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getEndereço() {
-        return Endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    /**
-     *
-     * @param Endereço
-     */
-    public void setEndereço(String Endereço) {
-        this.Endereço = Endereço;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getTelefone() {
-        return Telefone;
+    public String getComplemento() {
+        return complemento;
     }
 
-    /**
-     *
-     * @param Telefone
-     */
-    public void setTelefone(String Telefone) {
-        this.Telefone = Telefone;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getDocumento() {
-        return Documento;
+    public String getNumero() {
+        return numero;
     }
 
-    /**
-     *
-     * @param Documento
-     */
-    public void setDocumento(String Documento) {
-        this.Documento = Documento;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    /**
-     *
-     * @return
-     */
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getTelefoneR() {
+        return telefoneR;
+    }
+
+    public void setTelefoneR(String telefoneR) {
+        this.telefoneR = telefoneR;
+    }
+
+    public String getTelefoneC() {
+        return telefoneC;
+    }
+
+    public void setTelefoneC(String telefoneC) {
+        this.telefoneC = telefoneC;
+    }
+
+    public String getTelefoneCelular() {
+        return telefoneCelular;
+    }
+
+    public void setTelefoneCelular(String telefoneCelular) {
+        this.telefoneCelular = telefoneCelular;
+    }
+
     public String getSexo() {
-        return Sexo;
+        return sexo;
     }
 
-    /**
-     *
-     * @param Sexo
-     */
-    public void setSexo(String Sexo) {
-        this.Sexo = Sexo;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
-  
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public Long getId() {
+       return null;
+    }
+    
+   
+    
+    
 }

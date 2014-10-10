@@ -22,14 +22,22 @@ and open the template in the editor.
                     </f:facet>  
                     
                     <h:outputLabel value="Nome*:" />
-                    <p:inputText size="35" value="${funcionarioController.entidade.nome}" required="true" />
-                        
+                    <p:inputText size="35" value="${funcionarioController.entidade.nome}" required="true" 
+                      requiredMessage="O campo nome é de preenchimento obrigatório!" title="Nome" validator="#{funcionarioController.validarEspacoEmBranco}"
+                                         validatorMessage="O nome não pode conter numeros ou caracteres especiais!">
+                                <f:validateRegex  pattern="^([A-Z,a-z, ,ã,á,à,â,ê,í,ú,õ,é,ü]){0,50}$" for="txtnome"/>
+                               
+                     </p:inputText>
+                    
                     <h:outputLabel value="Login*:" />                    
-                    <p:inputText size="35" value="${funcionarioController.entidade.login}" required="true" />
+                    <p:inputText size="35" value="${funcionarioController.entidade.login}" required="true" 
+                                 requiredMessage="O campo Login é de preenchimento obrigatório!" title="Login" validator="#{funcionarioController.validarEspacoEmBranco}"/>
                         
                     <h:outputLabel value="Senha*:" />
-                    <p:password label="senha" size="26" value="${funcionarioController.entidade.senha}" required="true" />                   
-                   
+                    <p:password label="senha" size="26" value="${funcionarioController.entidade.senha}" required="true"
+                                requiredMessage="O campo senha é de preenchimento obrigatório!" title="Senha" validator="#{funcionarioController.validarEspacoEmBranco}">
+                               
+                    </p:password>
 
                 </h:panelGrid>
                 <br/>
