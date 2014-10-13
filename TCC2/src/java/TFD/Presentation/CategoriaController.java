@@ -112,7 +112,7 @@ public class CategoriaController implements Serializable{
         this.entidade = entidade;
     }
 
-    public List<Categoria> getListagem() {
+    public List<Categoria> getLista() {
         if (lista == null) {
             Categoria filtro = new Categoria();
             lista = dao.Buscar(filtro);
@@ -121,8 +121,8 @@ public class CategoriaController implements Serializable{
     }
 
   
-    public void setListagem(List<Categoria> listagem) {
-        this.lista = listagem;
+    public void setLista(List<Categoria> lista) {
+        this.lista = lista;
     }
 
     

@@ -88,7 +88,7 @@ public class FuncionarioDAO
 
     }
     
-   public Funcionario porLogin(String login){
+   /* public Funcionario porLogin(String login){
         String consulta = "select f from Funcionario f where f.login=:login";
                 // Cria a consulta no JPA
         Query query = manager.createQuery(consulta);
@@ -97,10 +97,10 @@ public class FuncionarioDAO
         query.setParameter("login", login);
 
         // Executa a consulta
-        return (Funcionario)query.getSingleResult();
+        return (Funcionario)query.getSingleResult(); 
 
 
-    }
+    }*/
 
    
     

@@ -6,8 +6,10 @@
 
 package TFD.Presentation;
 
-import TFD.DomainModel.Funcionario;
-import TFD.DomainModel.FuncionarioRepositorio;
+import TFD.DomainModel.Carro;
+import TFD.DomainModel.CarroRepositorio;
+import TFD.DomainModel.Categoria;
+import TFD.DomainModel.CategoriaRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,29 +24,27 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "funcionarioController")
+@Named(value = "carroController")
 @SessionScoped
-public class FuncionarioController implements Serializable {
-
-    Funcionario entidade;
-    Funcionario filtro;
-    List<Funcionario> lista;
+public class CarroController implements Serializable {
+    
+    Carro entidade;
+    Carro filtro;
+    List<Carro> lista;
+    List<Categoria> listagemcategoria;
 
     @EJB
-    FuncionarioRepositorio dao;
+    CarroRepositorio dao;
     
-
-    /**
-     * Creates a new instance of FuncionarioController
-     */
-    public FuncionarioController() {
-        entidade = new Funcionario();
-        filtro = new Funcionario();
+    @EJB
+    CategoriaRepositorio daoCategoria;
+    
+    
+    public CarroController() {
+        entidade = new Carro();
+        filtro = new Carro();
     }
-
-    /**
-     *
-     */
+    
     
      public void validarEspacoEmBranco(FacesContext contexto, UIComponent componente, Object valor) {
         String valorString = (String) valor;
@@ -55,10 +55,9 @@ public class FuncionarioController implements Serializable {
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, mensagem);
             contexto.addMessage(componente.getClientId(contexto), facesMessage);
         }
-
-    }
+}
     
-    
+ 
     public void exibirMensagem(String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
@@ -72,21 +71,21 @@ public class FuncionarioController implements Serializable {
         lista = null;
         exibirMensagem("Salvo!");
     }
-
-   
-    public String editar() {
-        return "CadastroFuncionario.xhtml";
+    
+    
+     public String editar() {
+        return "CarroEditar.xhtml";
     }
     
    
     public String novo(){
-        return "CadastroFuncionario.xhtml";
+        return "Carro.xhtml";
     }
 
    
     public String criar() {
-        entidade = new Funcionario();
-        return "CadastroFuncionario.xhtml";
+        entidade = new Carro();
+        return "Carro.xhtml";
     }
 
    
@@ -94,50 +93,59 @@ public class FuncionarioController implements Serializable {
         dao.Apagar(entidade);
         lista = null;
         exibirMensagem("Apagado com sucesso!");
-        return "FuncionarioListar.xhtml";
+        return "CarroListagem.xhtml";
     }
 
   
     public String filtrar() {
         lista = dao.Buscar(filtro);
-        return "FuncionarioListar.xhtml";
+        return "CarroListagem.xhtml";
     }
 
     
     public String voltar() {
         lista = null;
-        return "FuncionarioListar.xhtml";
+        return "CarroListagem.xhtml";
     }
     
   
-    public Funcionario getEntidade() {
+    public Carro getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Funcionario entidade) {
-        this.entidade = entidade;
-    }
-
-    public List<Funcionario> getLista() {
+    public List<Carro> getLista() {
         if (lista == null) {
-            Funcionario filtro = new Funcionario();
+            Carro filtro = new Carro();
             lista = dao.Buscar(filtro);
         }
         return lista;
     }
 
-  
-    public void setLista(List<Funcionario> lista) {
+    public void setLista(List<Carro> lista) {
         this.lista = lista;
     }
 
+    public List<Categoria> getListagemcategoria() {
+        if (listagemcategoria == null) {
+            listagemcategoria = daoCategoria.Buscar(null);
+        }
+        return listagemcategoria;
+    }
+
+    public void setListagemcategoria(List<Categoria> listagemcategoria) {
+       
+        this.listagemcategoria = listagemcategoria;
+    }
+
     
-    public Funcionario getFiltro() {
+    
+    public Carro getFiltro() {
         return filtro;
     }
 
     
-    public void setFiltro(Funcionario filtro) {
+    public void setFiltro(Carro filtro) {
         this.filtro = filtro;
     }
+    
 }

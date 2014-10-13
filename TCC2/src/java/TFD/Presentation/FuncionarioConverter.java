@@ -36,11 +36,11 @@ public class FuncionarioConverter implements Serializable, Converter {
     FuncionarioRepositorio daoFuncionario;
 
   
-    public List<Funcionario> AutoCompleteFuncionario (String query){
+   /* public List<Funcionario> AutoCompleteFuncionario (String query){
         Funcionario filtro = new Funcionario();
         filtro.setNome(query);
         return daoFuncionario.Buscar(filtro);
-    }
+    } */
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {

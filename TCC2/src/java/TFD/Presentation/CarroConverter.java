@@ -7,8 +7,8 @@
 package TFD.Presentation;
 
 
-import TFD.DomainModel.Categoria;
-import TFD.DomainModel.CategoriaRepositorio;
+import TFD.DomainModel.Carro;
+import TFD.DomainModel.CarroRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,37 +22,34 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "categoriaConverter")
+@Named(value = "carroConverter")
 @SessionScoped
-public class CategoriaConverter implements Serializable, Converter{
+public class CarroConverter implements Serializable, Converter{
     
-    
-     public CategoriaConverter() {
+    public CarroConverter() {
     }
 
      @EJB
-     CategoriaRepositorio daoCategoria;
+     CarroRepositorio daoCarro;
      
      
-     
-      @Override
+ @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         if (value == null || value.trim().equals("")) {
             return null;
         } else {
             Long id = Long.parseLong(value);
-            return daoCategoria.Abrir(id);
+            return daoCarro.Abrir(id);
         }
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if (value == null || value.toString().equals("")) {
-            return "";
-        } else {
-            Categoria c = (Categoria) value;
-            return c.getIdCategoria().toString();
-        }
+      if (value == null || value.toString().equals("")){
+          return "";
+      } else{
+          Carro ca = (Carro)value;
+          return ca.getIdCarro().toString();
+      } 
     }
-    
 }

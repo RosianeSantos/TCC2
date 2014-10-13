@@ -42,7 +42,7 @@ public class PacienteDAO
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
             if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " lower(f.nome) like lower('%" + obj.getNome() + "%')";                
+                filtro += " lower(p.nome) like lower('%" + obj.getNome() + "%')";                
             }
 
             if (obj.getEndereco()!= null && obj.getEndereco().length() > 0) {
@@ -107,7 +107,7 @@ public class PacienteDAO
                     filtro = filtro + " and ";
                 }
                 filtro += " p.telefoneCelular=:telefoneCelular";
-                parametros.put("telefone", obj.getTelefoneCelular());
+                parametros.put("telefoneCelular", obj.getTelefoneCelular());
             }
             
             

@@ -22,33 +22,20 @@ and open the template in the editor.
                         CARRO  
                     </f:facet>  
                     
-                    
-                    <h:outputLabel value="ID Carro:" />
-                    <p:inputText value="#{carroController.entidade.idCarro}" required="true"/> 
-                    
                     <h:outputLabel value="Modelo:" />
-                    <p:inputText value="#{carroController.entidade.nome}" required="true"/>
+                    <p:inputText value="#{carroController.entidade.modelo}" required="true"/>
                         
-                    Categoria*:<br/>
-                    <p:selectOneMenu value="#{categoriaController.entidade.categoria}" label="Categoria"
-                                     required="true" >
-                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
-                        <f:selectItem itemLabel="Hatches" itemValue="Hatches"/>
-                        <f:selectItem itemLabel="Sedãs" itemValue="Sedãs"/>
-                         <f:selectItem itemLabel="Picapes" itemValue="Picapes"/>
-                          <f:selectItem itemLabel="Familiares" itemValue="Familiares"/>
-                           <f:selectItem itemLabel="Suvs" itemValue="Suvs"/>
-                            <f:selectItem itemLabel="Cupês" itemValue="Cupês"/>
-                             <f:selectItem itemLabel="Vans" itemValue="Vans"/>
-                      
-                    
+                   <h:outputLabel value="Categoria*:" />
+                   <p:selectOneMenu value="#{carroController.entidade.categoria}" converter="${categoriaConverter}" required="true">
+                         <f:selectItem itemLabel="Selecione" itemValue=""/>
+                         <f:selectItems value="#{carroController.listagemcategoria}" />
                     </p:selectOneMenu>
                             
                     <h:outputLabel value="Quantidade Pessoas:" />
-                    <p:inputText value="#{quantidadeController.entidade.quantidade}" required="true"/>
+                    <p:inputText value="#{carroController.entidade.quantidade}" required="true"/>
                     
                     <h:outputLabel value="Placa:" />
-                    <p:inputText value="#{placaController.entidade.placa}" required="true"/>
+                    <p:inputText value="#{carroController.entidade.placa}" required="true"/>
                     
                 </h:panelGrid>
                 <br/>

@@ -21,7 +21,7 @@ import javax.persistence.Id;
 public class Funcionario implements Entidade,  Serializable{
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.AUTO) 
     private Long idFuncionario;
     
    
@@ -63,8 +63,8 @@ public class Funcionario implements Entidade,  Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + (this.idFuncionario != null ? this.idFuncionario.hashCode() : 0);
+        int hash = 0;
+        hash += (idFuncionario != null ? idFuncionario.hashCode() : 0);
         return hash;
     }
 
@@ -85,7 +85,7 @@ public class Funcionario implements Entidade,  Serializable{
 
     @Override
     public String toString() {
-        return "Funcionario{" + "nome=" + nome + '}';
+        return nome;
     }
 
     @Override
