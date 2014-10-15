@@ -57,7 +57,7 @@ public class FuncionarioDAO
                 if (filtro.length() > 0) {
                     filtro = filtro + " and ";
                 }
-                filtro += " f.idFuncionario =:idFuncionario";
+                filtro += " f.funcionario.idFuncionario =:idFuncionario";
                 parametros.put("idFuncionario", obj.getIdFuncionario());
             }
 
@@ -86,6 +86,24 @@ public class FuncionarioDAO
         // Executa a consulta
         return query.getResultList();
 
+    }
+    
+    
+    @Override
+    public boolean Apagar(Funcionario obj) {
+        
+        try {
+            Query query = manager.createQuery("DELETE  Funcionario f.idfuncionario =:idfuncionario");
+            query.setParameter("idfuncionario", obj.getIdFuncionario());
+            query.executeUpdate();
+            
+            return true;
+
+        } catch (Exception ex) {
+
+            return false;
+        }
+        
     }
     
    /* public Funcionario porLogin(String login){

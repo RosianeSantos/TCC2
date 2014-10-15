@@ -80,6 +80,7 @@ public class FuncionarioController implements Serializable {
     
    
     public String novo(){
+        entidade = new Funcionario();
         return "CadastroFuncionario.xhtml";
     }
 
@@ -91,10 +92,13 @@ public class FuncionarioController implements Serializable {
 
    
     public String apagar() {
-        dao.Apagar(entidade);
+        if(dao.Apagar(entidade)){
         lista = null;
         exibirMensagem("Apagado com sucesso!");
         return "FuncionarioListar.xhtml";
+        }else{
+            return "";
+        }
     }
 
   
@@ -106,7 +110,7 @@ public class FuncionarioController implements Serializable {
     
     public String voltar() {
         lista = null;
-        return "FuncionarioListar.xhtml";
+        return "CadastroFuncionario.xhtml";
     }
     
   

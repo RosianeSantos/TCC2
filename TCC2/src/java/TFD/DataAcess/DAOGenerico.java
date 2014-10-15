@@ -32,6 +32,13 @@ public abstract class DAOGenerico<T extends Entidade> implements Repositorio<T> 
     public DAOGenerico (Class t) {
         tipo = t;
     }
+    
+    
+    @Override
+    public T Refresh(Long id) {
+        manager.flush();
+        return (T) manager.getReference(tipo, id);
+    }
  
     @Override
     public boolean Salvar(T obj) {

@@ -68,7 +68,8 @@ and open the template in the editor.
                                   
                                   <h:outputLabel value="CPF*" />
                                   <p:inputMask id="CPF" value="${pacienteController.entidade.cpf}" required="true" mask="999.999.999-99"
-                                               requiredMessage="O campo CPF é de preenchimento obrigatorio!" title="cpf" validator="#{pacienteController.validarEspacoEmBranco}" />
+                                               requiredMessage="O campo CPF é de preenchimento obrigatorio!" title="cpf"  
+                                               validator="#{pacienteController.validaCPF}"/>
                                                
                                  
                 </h:panelGrid>
