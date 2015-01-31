@@ -36,7 +36,7 @@ public class EspecialidadeConverter implements Serializable, Converter {
   
     public List<Especialidade> AutoCompleteFuncionario (String query){
         Especialidade filtro = new Especialidade();
-        filtro.setNome(query);
+        filtro.setNomeEspecialidade(query);
         return daoEspecialidade.Buscar(filtro);
     }
 

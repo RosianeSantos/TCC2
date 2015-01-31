@@ -9,7 +9,6 @@ package TFD.Presentation;
 import TFD.DomainModel.Carro;
 import TFD.DomainModel.CarroRepositorio;
 import TFD.DomainModel.Categoria;
-import TFD.DomainModel.CategoriaRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,18 +25,17 @@ import javax.inject.Named;
  */
 @Named(value = "carroController")
 @SessionScoped
-public class CarroController implements Serializable {
+public class CarroController  extends ControllerGenerico<Carro> implements Serializable{
     
-    Carro entidade;
-    Carro filtro;
-    List<Carro> lista;
-    List<Categoria> listagemcategoria;
+//    Carro entidade;
+//    Carro filtro;
+//    List<Carro> lista;
+//    List<Categoria> listagemcategoria;
 
     @EJB
     CarroRepositorio dao;
     
-    @EJB
-    CategoriaRepositorio daoCategoria;
+
     
     
     public CarroController() {
@@ -67,85 +65,70 @@ public class CarroController implements Serializable {
      *
      Criando o Metodo de salvar */
     public void salvar() {
-        dao.Salvar(entidade);
-        lista = null;
-        exibirMensagem("Salvo!");
+        if(dao.Salvar(entidade)){
+            listagem = null; 
+        } else {
+            //mensagem de erro
+        }
     }
-    
-    
-     public String editar() {
-        return "CarroEditar.xhtml";
+
+   
+    public String editar() {
+        return "Carro.xhtml";
     }
     
    
     public String novo(){
+        entidade = new Carro();
+        return "Carro.xhtml";
+    }
+    
+    @Override
+    public String abrir() {
         return "Carro.xhtml";
     }
 
    
     public String criar() {
         entidade = new Carro();
-        return "Carro.xhtml";
+        return "ListagemCarro.xhtml";
     }
 
+    @Override
+    public String cancelar() {
+        return "ListagemCarro.xhtml";
+    }
    
-    public String apagar() {
-        dao.Apagar(entidade);
-        lista = null;
-        exibirMensagem("Apagado com sucesso!");
-        return "CarroListagem.xhtml";
+    @Override
+    public String excluir() {
+        if(dao.Apagar(entidade)){
+            listagem = null; 
+            return "";
+        } else {
+            return "";
+        }
     }
 
   
-    public String filtrar() {
-        lista = dao.Buscar(filtro);
-        return "CarroListagem.xhtml";
+    @Override
+    public void filtrar() {
+        listagem = dao.Buscar(filtro);
     }
 
     
-    public String voltar() {
-        lista = null;
-        return "CarroListagem.xhtml";
-    }
+//    public String voltar() {
+//        lista = null;
+//        return "EspecialidadeListar.xhtml";
+//    }
     
-  
-    public Carro getEntidade() {
-        return entidade;
-    }
-
-    public List<Carro> getLista() {
-        if (lista == null) {
-            Carro filtro = new Carro();
-            lista = dao.Buscar(filtro);
-        }
-        return lista;
-    }
-
-    public void setLista(List<Carro> lista) {
-        this.lista = lista;
-    }
-
-    public List<Categoria> getListagemcategoria() {
-        if (listagemcategoria == null) {
-            listagemcategoria = daoCategoria.Buscar(null);
-        }
-        return listagemcategoria;
-    }
-
-    public void setListagemcategoria(List<Categoria> listagemcategoria) {
-       
-        this.listagemcategoria = listagemcategoria;
-    }
-
+   
     
-    
-    public Carro getFiltro() {
-        return filtro;
+     public CarroRepositorio getDao() {
+        return dao;
     }
 
-    
-    public void setFiltro(Carro filtro) {
-        this.filtro = filtro;
+    public void setDao(CarroRepositorio dao) {
+        this.dao = dao;
     }
     
 }

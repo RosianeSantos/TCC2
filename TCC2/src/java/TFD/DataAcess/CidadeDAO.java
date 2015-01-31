@@ -7,7 +7,7 @@
 package TFD.DataAcess;
 
 import TFD.DomainModel.Cidade;
-import TFD.DomainModel.ICidadeRepositorio;
+import TFD.DomainModel.CidadeRepositorio;
 import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,7 +20,7 @@ import javax.persistence.Query;
 @Stateless(name = "ICidadeRepositorio")
 public class CidadeDAO 
         extends DAOGenerico<Cidade>
-        implements ICidadeRepositorio{
+        implements CidadeRepositorio{
     
     public CidadeDAO() {
         super(Cidade.class);

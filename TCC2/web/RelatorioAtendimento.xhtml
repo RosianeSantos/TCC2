@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <center>
+                 <p:panelGrid columns="2" style="color: blue">
+                    
+                   <f:facet name="header">  
+                    <h2 style="font: medium; color: blue"> Relatório de Atendimento </h2>   
+                   </f:facet>  
+
+                   <h:outputLabel value="Unidade Medica Assistencial:" />
+                   <p:selectOneMenu value="${relatorioAtendimentoController.filtro.idHospital}" label="nomehospital" 
+                                    converter="${hospitalConverter}" required="false" >
+                       <f:selectItem itemLabel="Selecione..." noSelectionOption="true"/>
+                       <f:selectItems value="${hospitalController.listagem}"/>
+                        
+                   </p:selectOneMenu>
+                   
+                  <h:outputLabel value="Clinicatr:" />
+                  <p:inputText value="${relatorioAtendimentoController.filtro.clinicatr}" required="false"/>  
+                   
+                  <h:outputLabel value="Numero do TFD:" />
+                  <p:inputText value="${relatorioAtendimentoController.filtro.numeroTFD}" required="false"/> 
+                  
+                   <h:outputLabel value="Paciente:" />
+                   <p:selectOneMenu value="${relatorioAtendimentoController.filtro.idPaciente}" label="nomePaciente" 
+                                    converter="${pacienteConverter}" required="false" >
+                       <f:selectItem itemLabel="Selecione..." noSelectionOption="true"/>
+                       <f:selectItems value="${pacienteController.listagem}"/>
+                        
+                   </p:selectOneMenu>
+                   
+                   
+                   <h:outputLabel value="Procedencia:" />
+                   <p:selectOneMenu value="${relatorioAtendimentoController.filtro.idEspecialidade}" label="enderecoPaciente" 
+                                    converter="${especialidadeConverter}" required="false" >
+                       <f:selectItem itemLabel="Selecione..." noSelectionOption="true"/>
+                       <f:selectItems value="${especialidadeController.listagem}"/>
+                        
+                   </p:selectOneMenu>
+                
+
+                   <f:facet name="footer">  
+                     <p:commandButton ajax="false" value="Gerar Relatório" icon="ui-icon-check" 
+                                      action="${relatorioAtendimentoController.executaRelatorioPDF}" />  
+                   </f:facet>
+                   
+                 </p:panelGrid>
+              </center>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

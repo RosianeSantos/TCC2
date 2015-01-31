@@ -26,11 +26,11 @@ import javax.inject.Named;
  */
 @Named(value = "hospitalController")
 @SessionScoped
-public class HospitalController implements Serializable {
+public class HospitalController extends ControllerGenerico<Hospital> implements Serializable {
 
-    Hospital entidade;
-    Hospital filtro;
-    List<Hospital> lista;
+//    Hospital entidade;
+//    Hospital filtro;
+//    List<Hospital> lista;
 
     @EJB
     HospitalRepositorio dao;
@@ -63,77 +63,71 @@ public class HospitalController implements Serializable {
     /**
      *
      Criando o Metodo de salvar */
-    public void salvar() {
-        dao.Salvar(entidade);
-        lista = null;
-        exibirMensagem("Salvo!");
+   public void salvar() {
+        if(dao.Salvar(entidade)){
+            listagem = null; 
+        } else {
+            //mensagem de erro
+        }
     }
 
    
     public String editar() {
-        return "HospitalEditar.xhtml";
+        return "Hospital.xhtml";
     }
     
    
     public String novo(){
-        return "HospitalEditar.xhtml";
+        entidade = new Hospital();
+        return "Hospital.xhtml";
+    }
+    
+    @Override
+    public String abrir() {
+        return "Hospital.xhtml";
     }
 
    
     public String criar() {
         entidade = new Hospital();
-        return "HospitalEditar.xhtml";
+        return "ListagemHospital.xhtml";
     }
 
+    @Override
+    public String cancelar() {
+        return "ListagemHospital.xhtml";
+    }
    
-    public String apagar() {
-        dao.Apagar(entidade);
-        lista = null;
-        exibirMensagem("Apagado com sucesso!");
-        return "HospitalListagem.xhtml";
-    }
-
-  
-    public String filtrar() {
-        lista = dao.Buscar(filtro);
-        return "HospitalListagem.xhtml";
-    }
-
-    
-    public String voltar() {
-        lista = null;
-        return "HospitalListagem.xhtml";
-    }
-    
-  
-    public Hospital getEntidade() {
-        return entidade;
-    }
-
-    public void setEntidade(Hospital entidade) {
-        this.entidade = entidade;
-    }
-
-    public List<Hospital> getListagem() {
-        if (lista == null) {
-            Hospital filtro = new Hospital();
-            lista = dao.Buscar(filtro);
+    @Override
+    public String excluir() {
+        if(dao.Apagar(entidade)){
+            listagem = null; 
+            return "";
+        } else {
+            return "";
         }
-        return lista;
     }
 
   
-    public void setListagem(List<Hospital> listagem) {
-        this.lista = listagem;
+    @Override
+    public void filtrar() {
+        listagem = dao.Buscar(filtro);
     }
 
     
-    public Hospital getFiltro() {
-        return filtro;
+//    public String voltar() {
+//        lista = null;
+//        return "EspecialidadeListar.xhtml";
+//    }
+    
+   
+    
+     public HospitalRepositorio getDao() {
+        return dao;
     }
 
-    
-    public void setFiltro(Hospital filtro) {
-        this.filtro = filtro;
+    public void setDao(HospitalRepositorio dao) {
+        this.dao = dao;
     }
+
 }

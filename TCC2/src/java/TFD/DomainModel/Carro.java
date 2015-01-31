@@ -7,12 +7,10 @@
 package TFD.DomainModel;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  *
@@ -20,16 +18,18 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Carro implements Entidade, Serializable {
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCarro;
+    
     private String modelo;
-    private String quantidade;
+//    private String quantidade;
     private String placa;
     
-    @ManyToOne(cascade= CascadeType.ALL)
-    private Categoria categoria;
+//    @ManyToOne(cascade= CascadeType.ALL)
+//    private Categoria categoria;
 
     public Long getIdCarro() {
         return idCarro;
@@ -47,13 +47,13 @@ public class Carro implements Entidade, Serializable {
         this.modelo = modelo;
     }
 
-    public String getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
-    }
+//    public String getQuantidade() {
+//        return quantidade;
+//    }
+//
+//    public void setQuantidade(String quantidade) {
+//        this.quantidade = quantidade;
+//    }
 
     public String getPlaca() {
         return placa;
@@ -63,13 +63,13 @@ public class Carro implements Entidade, Serializable {
         this.placa = placa;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
+//     public Categoria getCategoria() {
+//        return categoria;
+//    }
+//
+//    public void setCategoria(Categoria categoria) {
+//        this.categoria = categoria;
+//    }
 
 
 

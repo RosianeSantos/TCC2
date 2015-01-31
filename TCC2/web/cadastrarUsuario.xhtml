@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+   <body>
+
+        <ui:composition template="./TemplateExterno.xhtml">
+
+            <ui:define name="content">
+               <div align="center">
+                  <p:panel header="Cadastro de Usuário" style="width: 40%; font: medium; color: blue"/>
+                    <p:messages autoUpdate="true"/>
+
+                     <h:form>
+                    
+                       <p:growl id="growl" showDetail="true" sticky="true" />   
+                    
+                       <p:panelGrid columns="1" style="width: 40%"  >  
+                 
+                         <h:outputLabel value="Nome*:"   /> 
+                         <p:inputText value="#{usuarioController.entidade.nome}" required="true" size="50" />  
+
+<!--                         <h:outputLabel value="Email*:" /> 
+                         <p:inputText value="#{usuarioController.entidade.email}" required="true" size="50"/> -->
+                         
+                         <h:outputLabel value="Senha*:" />
+                         <p:password required="true" id="senha1" value="#{usuarioController.entidade.senha}" size="50" match="senha2" feedback="true"
+                           weakLabel="Facil" goodLabel="Médio" strongLabel="Difícil"/> 
+                         
+                         <h:outputLabel value="Confirmar a Senha*:" />
+                         <p:password id="senha2" label="Senha2" value="#{usuarioController.entidade.senha}" 
+                                      required="true" size="50"/><br/>
+                            
+                         (*)Campos de preenchimento obrigatórios.
+          
+                    </p:panelGrid>
+                    
+                    <p:panel id="Rodape">
+                        
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${usuarioController.cancelar()}" />
+
+                        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgSalvar">
+                            <p:commandButton ajax="false" value="SIM" action="#{usuarioController.salvar()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                        </p:confirmDialog>
+
+                     
+
+                    </p:panel>
+                 </h:form>
+                   
+              </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

@@ -92,7 +92,7 @@ public class Funcionario implements Entidade,  Serializable{
 
     @Override
     public String toString() {
-        return nome;
+        return idFuncionario + " - " + nome;
     }
 
     @Override

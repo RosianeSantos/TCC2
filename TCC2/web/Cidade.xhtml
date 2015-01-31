@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        ESPECIALIDADE  
+                    </f:facet>  
+
+                       <h:outputLabel value="Nome*:" />                    
+                       <p:inputText size="30" value="#{cidadeOrigemController.entidade.nome}" required="true" />
+
+                       <p:outputLabel value="Estado"/>
+                       <p:selectOneMenu id="estado" value="#{cidadeOrigemController.entidade.estado}"  required="true">
+                         <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                        <f:selectItem itemLabel="AC" itemValue="AC"/>
+                        <f:selectItem itemLabel="AL" itemValue="AL"/>
+                        <f:selectItem itemLabel="AP" itemValue="AP"/>
+                        <f:selectItem itemLabel="AM" itemValue="AM"/>
+                        <f:selectItem itemLabel="BA" itemValue="BA"/>
+                        <f:selectItem itemLabel="CE" itemValue="CE"/>
+                        <f:selectItem itemLabel="DF" itemValue="DF"/>
+                        <f:selectItem itemLabel="ES" itemValue="ES"/>
+                        <f:selectItem itemLabel="GO" itemValue="GO"/>
+                        <f:selectItem itemLabel="MA" itemValue="MA"/>                        
+                        <f:selectItem itemLabel="MT" itemValue="MT"/>
+                        <f:selectItem itemLabel="MS" itemValue="MS"/>
+                        <f:selectItem itemLabel="MG" itemValue="MG"/>                        
+                        <f:selectItem itemLabel="PA" itemValue="PA"/>
+                        <f:selectItem itemLabel="PB" itemValue="PB"/>
+                        <f:selectItem itemLabel="PR" itemValue="PR"/>
+                        <f:selectItem itemLabel="PE" itemValue="PE"/>
+                        <f:selectItem itemLabel="PI" itemValue="PI"/>                        
+                        <f:selectItem itemLabel="RJ" itemValue="RJ"/>
+                        <f:selectItem itemLabel="RN" itemValue="RN"/>
+                        <f:selectItem itemLabel="RS" itemValue="RS"/>
+                        <f:selectItem itemLabel="RO" itemValue="RO"/>
+                        <f:selectItem itemLabel="RR" itemValue="RR"/>                            
+                        <f:selectItem itemLabel="SC" itemValue="SC"/>                            
+                        <f:selectItem itemLabel="SE" itemValue="SE"/>
+                        <f:selectItem itemLabel="SP" itemValue="SP"/>                               
+                        <f:selectItem itemLabel="TO" itemValue="TO"/>
+                    </p:selectOneMenu>
+
+                        (*) Campos de Preenchimento Obrigatório
+
+
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${cidadeOrigemController.cancelar()}" />
+
+                        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgSalvar">
+                            <p:commandButton ajax="false" value="SIM" action="#{cidadeOrigemController.salvar()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                        </p:confirmDialog>
+
+                        <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgRemover">
+                            <p:commandButton ajax="false" value="SIM" action="${cidadeOrigemController.excluir()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                        </p:confirmDialog>  
+
+
+
+                    </h:panelGrid>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

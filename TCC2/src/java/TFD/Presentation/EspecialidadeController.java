@@ -25,12 +25,12 @@ import javax.inject.Named;
  */
 @Named(value = "especialidadeController")
 @SessionScoped
-public class EspecialidadeController implements Serializable{
+public class EspecialidadeController  extends ControllerGenerico<Especialidade> implements Serializable{
     
-    Especialidade entidade;
-    Especialidade filtro;
-    List<Especialidade> lista;
-
+//    Especialidade entidade;
+//    Especialidade filtro;
+//    List<Especialidade> lista;
+//
     @EJB
     EspecialidadeRepositorio dao;
     
@@ -54,86 +54,80 @@ public class EspecialidadeController implements Serializable{
     }
     
     
-    public void exibirMensagem(String msg) {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(msg));
-    } 
+//    public void exibirMensagem(String msg) {
+//        FacesContext context = FacesContext.getCurrentInstance();
+//        context.addMessage(null, new FacesMessage(msg));
+//    } 
 
+     
+     
     /**
      *
      Criando o Metodo de salvar */
     public void salvar() {
-        dao.Salvar(entidade);
-        lista = null;
-        exibirMensagem("Salvo!");
+        if(dao.Salvar(entidade)){
+            listagem = null; 
+        } else {
+            //mensagem de erro
+        }
     }
 
    
     public String editar() {
-        return "EspecialidadeEditar.xhtml";
+        return "Especialidades.xhtml";
     }
     
    
     public String novo(){
-        return "EspecialidadeEditar.xhtml";
+        entidade = new Especialidade();
+        return "Especialidades.xhtml";
+    }
+    
+    @Override
+    public String abrir() {
+        return "Especialidades.xhtml";
     }
 
    
     public String criar() {
         entidade = new Especialidade();
-        return "EspecialidadeEditar.xhtml";
+        return "EspecialidadeListar.xhtml";
     }
 
+    @Override
+    public String cancelar() {
+        return "EspecialidadeListar.xhtml";
+    }
    
-    public String apagar() {
-        dao.Apagar(entidade);
-        lista = null;
-        exibirMensagem("Apagado com sucesso!");
-        return "EspecialidadeListagem.xhtml";
-    }
-
-  
-    public String filtrar() {
-        lista = dao.Buscar(filtro);
-        return "EspecialidadeListagem.xhtml";
-    }
-
-    
-    public String voltar() {
-        lista = null;
-        return "EspecialidadeListagem.xhtml";
-    }
-    
-  
-    public Especialidade getEntidade() {
-        return entidade;
-    }
-
-    public void setEntidade(Especialidade entidade) {
-        this.entidade = entidade;
-    }
-
-    public List<Especialidade> getListagem() {
-        if (lista == null) {
-            Especialidade filtro = new Especialidade();
-            lista = dao.Buscar(filtro);
+    @Override
+    public String excluir() {
+        if(dao.Apagar(entidade)){
+            listagem = null; 
+            return "";
+        } else {
+            return "";
         }
-        return lista;
     }
 
   
-    public void setListagem(List<Especialidade> listagem) {
-        this.lista = listagem;
+    @Override
+    public void filtrar() {
+        listagem = dao.Buscar(filtro);
     }
 
     
-    public Especialidade getFiltro() {
-        return filtro;
+//    public String voltar() {
+//        lista = null;
+//        return "EspecialidadeListar.xhtml";
+//    }
+    
+   
+    
+     public EspecialidadeRepositorio getDao() {
+        return dao;
     }
 
-    
-    public void setFiltro(Especialidade filtro) {
-        this.filtro = filtro;
+    public void setDao(EspecialidadeRepositorio dao) {
+        this.dao = dao;
     }
-    
 }

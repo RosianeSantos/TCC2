@@ -7,9 +7,8 @@
 package TFD.Presentation;
 
 import TFD.DomainModel.Cidade;
-import TFD.DomainModel.ICidadeRepositorio;
+import TFD.DomainModel.CidadeRepositorio;
 import java.io.Serializable;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -25,14 +24,14 @@ import javax.inject.Named;
  */
 @Named(value = "cidadeOrigemController")
 @SessionScoped
-public class CidadeOrigemController implements Serializable{
+public class CidadeOrigemController extends ControllerGenerico<Cidade>  implements Serializable{
    
-    Cidade entidade;
-    Cidade filtro;
-    List<Cidade> lista;
+//    Cidade entidade;
+//    Cidade filtro;
+//    List<Cidade> lista;
 
     @EJB
-    ICidadeRepositorio dao;
+    CidadeRepositorio dao;
     
 
     /**
@@ -68,77 +67,70 @@ public class CidadeOrigemController implements Serializable{
     /**
      *
      Criando o Metodo de salvar */
-    public void salvar() {
-        dao.Salvar(entidade);
-        lista = null;
-        exibirMensagem("Salvo!");
+   public void salvar() {
+        if(dao.Salvar(entidade)){
+            listagem = null; 
+        } else {
+            //mensagem de erro
+        }
     }
 
    
     public String editar() {
-        return "CidadeEditar.xhtml";
+        return "Cidade.xhtml";
     }
     
    
     public String novo(){
-        return "CidadeEditar.xhtml";
+        entidade = new Cidade();
+        return "Cidade.xhtml";
+    }
+    
+    @Override
+    public String abrir() {
+        return "Cidade.xhtml";
     }
 
    
     public String criar() {
         entidade = new Cidade();
-        return "CidadeEditar.xhtml";
+        return "ListagemCidade.xhtml";
     }
 
+    @Override
+    public String cancelar() {
+        return "ListagemCidade.xhtml";
+    }
    
-    public String apagar() {
-        dao.Apagar(entidade);
-        lista = null;
-        exibirMensagem("Apagado com sucesso!");
-        return "CidadeListagem.xhtml";
-    }
-
-  
-    public String filtrar() {
-        lista = dao.Buscar(filtro);
-        return "CidadeListagem.xhtml";
-    }
-
-    
-    public String voltar() {
-        lista = null;
-        return "CidadeListagem.xhtml";
-    }
-    
-  
-    public Cidade getEntidade() {
-        return entidade;
-    }
-
-    public void setEntidade(Cidade entidade) {
-        this.entidade = entidade;
-    }
-
-    public List<Cidade> getListagem() {
-        if (lista == null) {
-            Cidade filtro = new Cidade();
-            lista = dao.Buscar(filtro);
+    @Override
+    public String excluir() {
+        if(dao.Apagar(entidade)){
+            listagem = null; 
+            return "";
+        } else {
+            return "";
         }
-        return lista;
     }
 
   
-    public void setListagem(List<Cidade> listagem) {
-        this.lista = listagem;
+    @Override
+    public void filtrar() {
+        listagem = dao.Buscar(filtro);
     }
 
     
-    public Cidade getFiltro() {
-        return filtro;
+//    public String voltar() {
+//        lista = null;
+//        return "EspecialidadeListar.xhtml";
+//    }
+    
+   
+    
+     public CidadeRepositorio getDao() {
+        return dao;
     }
 
-    
-    public void setFiltro(Cidade filtro) {
-        this.filtro = filtro;
+    public void setDao(CidadeRepositorio dao) {
+        this.dao = dao;
     }
 }

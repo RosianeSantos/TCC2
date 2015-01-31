@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+           <ui:define name="content">
+             <br/>  
+              <center>
+             
+              <p:panelGrid columns="2" style="color: blue">
+                    
+                   <f:facet name="header">  
+                     <h2 style="font: medium; color: blue"> Filtros - Hospital </h2>   
+                   </f:facet>  
+
+                   <h:outputLabel value="Nome:" />
+                   <p:inputText value="${hospitalController.filtro.nome}"/>
+                   
+                  
+                   <f:facet name="footer">  
+                       <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${hospitalController.filtrar()}" style="margin:0"/>  
+                       <p:commandButton ajax="false" value="Novo Hospital" action="${hospitalController.novo}" />
+                   </f:facet>
+                   
+             </p:panelGrid>
+            </center>
+            <br/>
+            <br/>
+              
+             
+            <p:dataTable value="${hospitalController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:column sortBy="Nome" headerText="Nome">
+                ${item.nome}
+            </p:column>
+           <p:column sortBy="Endereço" headerText="Endereço">
+                ${item.endereco}
+            </p:column>
+                <p:column sortBy="Numero" headerText="Numero">
+                ${item.numero}
+            </p:column>
+                <p:column sortBy="Complemento" headerText="Complemento">
+                ${item.complemento}
+            </p:column>
+                <p:column sortBy="Telefone 1" headerText="Telefone1">
+                ${item.telefone1}
+            </p:column>
+                <p:column sortBy="Telefone 2" headerText="Telefone2">
+                ${item.telefone2}
+            </p:column>
+                <p:column sortBy="Telefone 3" headerText="Telefone3">
+                ${item.telefone3}
+            </p:column>
+<!--          <p:column sortBy="Cidade" headerText="Cidade">
+                ${item.cidade}
+            </p:column>-->
+              
+            <p:column headerText="Editar">
+                <p:commandButton value="Editar" ajax="false" action="${hospitalController.abrir}">
+                    <f:setPropertyActionListener target="${hospitalController.entidade}" value="${item}" />
+                </p:commandButton>
+            </p:column>
+              
+          </p:dataTable>
+
+          
+        </ui:define>
+
+      </ui:composition>
+
+    </body>
+</html>

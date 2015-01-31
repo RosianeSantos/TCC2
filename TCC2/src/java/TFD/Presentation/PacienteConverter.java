@@ -36,7 +36,7 @@ public class PacienteConverter implements Serializable, Converter  {
   
     public List<Paciente> AutoCompletePaciente (String query){
         Paciente filtro = new Paciente();
-        filtro.setNome(query);
+        filtro.setNomePaciente(query);
         return daoPaciente.Buscar(filtro);
     }
 

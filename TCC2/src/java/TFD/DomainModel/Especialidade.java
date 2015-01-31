@@ -24,7 +24,7 @@ public class Especialidade implements Entidade, Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idEspecialidade;
     
-    private String nome;
+    private String nomeEspecialidade;
 
     
     
@@ -37,13 +37,15 @@ public class Especialidade implements Entidade, Serializable{
         this.idEspecialidade = idEspecialidade;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeEspecialidade() {
+        return nomeEspecialidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeEspecialidade(String nomeEspecialidade) {
+        this.nomeEspecialidade = nomeEspecialidade;
     }
+
+   
 
     
      @Override
@@ -70,15 +72,14 @@ public class Especialidade implements Entidade, Serializable{
 
     @Override
     public String toString() {
-        return "Especialidade{" + "nome=" + nome + '}';
+        return nomeEspecialidade;
     }
     
     @Override
     public Long getId() {
         return null;
     }
-    
-    
+   
     
   
 }

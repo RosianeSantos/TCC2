@@ -40,6 +40,13 @@
     margin: 0px 170px 0px 170px;
 }
 
+.colunaDireita{  
+    text-align: left;  
+}  
+.colunaEsquerda{  
+    text-align: right;    
+}  
+
 #bottom {
     position: relative;
     background-color: #a2d4ff;

@@ -39,16 +39,16 @@ public class EspecialidadeDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
-            if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " lower(e.nome) like lower('%" + obj.getNome() + "%')";                
+            if (obj.getNomeEspecialidade()!= null && obj.getNomeEspecialidade().length() > 0) {
+                filtro += " lower(e.nomeEspecialidade) like lower('%" + obj.getNomeEspecialidade()+ "%')";                
             }
 
-            if (obj.getNome()!= null && obj.getNome().length() > 0) {
+            if (obj.getNomeEspecialidade()!= null && obj.getNomeEspecialidade().length() > 0) {
                 if (filtro.length() > 0) {
                     filtro += " and ";
                 }
-                filtro += " e.nome=:nome ";
-                parametros.put("nome", obj.getNome());
+                filtro += " e.nomeEspecialidade=:nomeEspecialidade ";
+                parametros.put("nomeEspecialidade", obj.getNomeEspecialidade());
             }
 
             if (obj.getIdEspecialidade()!= null && obj.getIdEspecialidade()> 0) {
@@ -56,7 +56,7 @@ public class EspecialidadeDAO
                     filtro = filtro + " and ";
                 }
                 filtro += " e.idEspecialidade =:idEspecialidade";
-                parametros.put("idFuncionario", obj.getIdEspecialidade());
+                parametros.put("idEspecialidade", obj.getIdEspecialidade());
             }
 
             

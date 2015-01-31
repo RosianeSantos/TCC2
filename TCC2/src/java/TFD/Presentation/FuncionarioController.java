@@ -75,6 +75,7 @@ public class FuncionarioController implements Serializable {
 
    
     public String editar() {
+        
         return "CadastroFuncionario.xhtml";
     }
     

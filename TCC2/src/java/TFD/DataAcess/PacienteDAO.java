@@ -41,16 +41,16 @@ public class PacienteDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj != null) {
-            if (obj.getNome() != null && obj.getNome().length() > 0) {
-                filtro += " lower(p.nome) like lower('%" + obj.getNome() + "%')";                
+            if (obj.getNomePaciente()!= null && obj.getNomePaciente().length() > 0) {
+                filtro += " lower(p.nomePaciente) like lower('%" + obj.getNomePaciente()+ "%')";                
             }
 
-            if (obj.getEndereco()!= null && obj.getEndereco().length() > 0) {
+            if (obj.getEnderecoPaciente()!= null && obj.getEnderecoPaciente().length() > 0) {
                 if (filtro.length() > 0) {
                     filtro += " and ";
                 }
-                filtro += " p.endereco=:endereco ";
-                parametros.put("endereco", obj.getEndereco());
+                filtro += " p.enderecoPaciente=:enderecoPaciente ";
+                parametros.put("enderecoPaciente", obj.getEnderecoPaciente());
             }
 
             if (obj.getIdPaciente()!= null && obj.getIdPaciente()> 0) {

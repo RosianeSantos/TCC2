@@ -44,15 +44,6 @@ public class CarroDAO extends DAOGenerico<Carro>
             }
 
 
-        if (obj.getQuantidade()!= null && obj.getQuantidade().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro += " and ";
-                }
-                filtro += " ca.quantidade=:quantidade ";
-                parametros.put("quantidade", obj.getQuantidade());
-            }
-
-
         if (obj.getIdCarro()!= null && obj.getIdCarro()> 0) {
             if (filtro.length() > 0) {
                 filtro = filtro + " and ";
@@ -69,13 +60,13 @@ public class CarroDAO extends DAOGenerico<Carro>
             parametros.put("placa", obj.getPlaca());
         }
 
-        if (obj.getCategoria()!= null && obj.getCategoria().toString().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " ca.categoria=:categoria ";
-                parametros.put("categoria", obj.getCategoria());
-            }
+//        if (obj.getCategoria()!= null && obj.getCategoria().toString().length() > 0) {
+//                if (filtro.length() > 0) {
+//                    filtro = filtro + " and ";
+//                }
+//                filtro += " ca.categoria=:categoria ";
+//                parametros.put("categoria", obj.getCategoria());
+//            }
        
         
 

@@ -7,20 +7,18 @@
 package TFD.DomainModel;
 
 import java.io.Serializable;
-import javax.ejb.Stateless;
-import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
+import org.hibernate.validator.constraints.br.CPF;
 /**
  *
  * @author Rosy
  */
 @Entity
-@Named(value = "Paciente")
+
 public class Paciente implements Entidade,  Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -28,21 +26,22 @@ public class Paciente implements Entidade,  Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idPaciente;
     
-     @Column(nullable = false, length = 300)
-    private String nome;
-    private String endereco;
+ 
+    private String nomePaciente;
+    private String enderecoPaciente;
     private String complemento;
     private String numero;
     private String cep;
-     @Column(length = 11)
+   
     private String telefoneR;
-     @Column(length = 11)
+   
     private String telefoneC;
-     @Column(length = 11)
+   
     private String telefoneCelular;
     private String sexo;
     private String rg;
     @Column(nullable = false, length = 11)
+    @CPF
     private String cpf;
 
     
@@ -55,22 +54,24 @@ public class Paciente implements Entidade,  Serializable {
         this.idPaciente = idPaciente;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomePaciente() {
+        return nomePaciente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomePaciente(String nomePaciente) {
+        this.nomePaciente = nomePaciente;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getEnderecoPaciente() {
+        return enderecoPaciente;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEnderecoPaciente(String enderecoPaciente) {
+        this.enderecoPaciente = enderecoPaciente;
     }
-
+    
+    
+    
     public String getComplemento() {
         return complemento;
     }
@@ -134,24 +135,35 @@ public class Paciente implements Entidade,  Serializable {
     public void setRg(String rg) {
         this.rg = rg;
     }
-    
-     @Transient
-     private String cpfFormatado;
 
     public String getCpf() {
-       if (cpfFormatado == null) {
-            if (cpf != null && cpf.length() == 11) {
-                cpfFormatado = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9, 11);
-            }
-        }
-        return cpfFormatado;
+        return cpf;
     }
 
     public void setCpf(String cpf) {
-        if (cpf != null) {
-            this.cpf = cpf.replace(".", "").replace("-", "");
-            cpfFormatado = null;
+        this.cpf = cpf;
+    }
+    
+      @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + (this.idPaciente != null ? this.idPaciente.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
         }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Paciente other = (Paciente) obj;
+        if (this.idPaciente != other.idPaciente && (this.idPaciente == null || !this.idPaciente.equals(other.idPaciente))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -159,7 +171,12 @@ public class Paciente implements Entidade,  Serializable {
        return null;
     }
     
-   
+   @Override
+    public String toString() {
+        return nomePaciente;
+    }
+    
+    
     
     
 }

@@ -7,7 +7,7 @@
 package TFD.Presentation;
 
 import TFD.DomainModel.Cidade;
-import TFD.DomainModel.ICidadeRepositorio;
+import TFD.DomainModel.CidadeRepositorio;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,7 +32,7 @@ public class CidadeOrigemConverter implements Serializable, Converter{
     }
 
      @EJB
-     ICidadeRepositorio daoCidade;
+     CidadeRepositorio daoCidade;
     
      
      public List<Cidade> AutoCompleteFuncionario (String query){

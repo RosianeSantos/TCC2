@@ -14,65 +14,79 @@ and open the template in the editor.
     <h:head>
 
         <title>TFD</title>
-        <link type="css/text" rel="stylesheet" href="./resources/Tema_1.css" />
+<!--        <link type="css/text" rel="stylesheet" href="./resources/Tema_1.css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
-        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />-->
           </h:head>
 
     <h:body>
 
-        <h:form>
+          <h:form> 
+         <p:growl id="growl" showDetail="true" sticky="true" />
+         
+         <p:menubar style="font: message-box; color: blue">
 
-            <p:growl id="growl" showDetail="true" sticky="true" />   
-            <p:menubar>
-                <p:menuitem value="Login" icon="ui-icon-key"  url="Login1.xhtml"/>  
-                <p:submenu label="Cadastros" icon="ui-icon-pencil">  
-                    <p:menuitem value="Funcionario" url="CadastroFuncionario.xhtml" />  
-                    <p:menuitem value="Hospital" url="Hospital.xhtml"/>
-                     <p:menuitem value="Cidade" url="CadastroCidade.xhtml"/>
-                       <p:menuitem value="Especialidade" url="Especialidades.xhtml"/>
-                        <p:menuitem value="Paciente" url="Paciente.xhtml"/>
-                        <p:menuitem value="Carro" url="Carro.xhtml"/>
-                        <p:menuitem value="Categoria Carro" url="Categoria.xhtml"/>
-                </p:submenu>
-                
-                  <p:submenu label="Listagem" icon="ui-icon-pencil">  
-                    <p:menuitem value="Funcionario" url="FuncionarioListar.xhtml" />
-                    <p:menuitem value="Paciente" url="PacienteListar.xhtml" />
-                    <p:menuitem value="Hospital" url="CidadeOrigemListar.xhtml" />
-                    <p:menuitem value="Especialidade" url="TipoApartamentoListar.xhtml" />
-                    <p:menuitem value="Cidade" url="ServicoListar.xhtml" />
-                    <p:menuitem value="Estado" url="HospedagemLista.xhtml" />
-                    <p:menuitem value="Carro" url="HospedeListar.xhtml"  /> 
-                    <p:menuitem value="Categoria Carro" url="FilialListar.xhtml"  /> 
-                   
-                 </p:submenu>
-                
-                
-                <p:submenu label="Agendamentos" icon="#">
-                    <p:menuitem value="Agendamento" url="Agendamento.xhtml"/>
-                </p:submenu>
-                
-                <p:submenu label="Relatórios" icon="ui-icon-note">
-                    <p:menuitem ajax="false" actionListener="#{funcaoController.XLS(actionEvent)}" value="Funcoes Cadastradas" />
-                </p:submenu>
-                
-                <p:submenu label="Logout" icon="ui-icon-note">
-                    <p:menuitem value="Logout" action="#{autenticacaoController.logout()}" />
-                    </p:submenu>
-            </p:menubar>
-           
+            
 
-            <div id="content" class="center_content">
-                <ui:insert name="content">Seja Bem vindo !!!! <br></br>
-                                        Para comecar a utilizar o sistema utilize o menu.</ui:insert>
-            </div>
-        </h:form>
+                 <p:menuitem value="Paciente" url="ListagemPaciente.xhtml" icon="ui-icon-pencil" />                    
+                 <p:menuitem value="Hospital" url="ListagemHospital.xhtml" icon="ui-icon-pencil"/> 
+                 <p:menuitem value="Especialidade" url="EspecialidadeListar.xhtml" icon="ui-icon-pencil" />
+                 <p:menuitem value="Carro" url="ListagemCarro.xhtml" icon="ui-icon-pencil"/>
+                 <p:menuitem value="Funcionario" url="ListagemFuncionario.xhtml" icon="ui-icon-pencil" />
+                 <p:menuitem value="Cidade" url="ListagemCidade.xhtml"  icon="ui-icon-pencil"/>
+                
+                
+            
 
-        <div id="bottom">
-            <center>Desenvolvido por: Rosiane dos Santos Nascimento </center>
+             <p:menuitem value="Recurso" icon="ui-icon-pencil" url="ListagemRecurso.xhtml" />
+             
+             <p:menuitem value="Recibo" icon="ui-icon-pencil" url="ListagemRecibo.xhtml" />
+
+             <p:submenu label="Relatórios" icon="ui-icon-pencil" >
+                 <p:menuitem value="Teste" url="RelatorioPacienteTeste.xhtml"  />     
+                 <p:menuitem value="Relatorio de Atendimento" url="RelatorioAtendimento.xhtml"  />
+            </p:submenu>
+
+             <p:submenu label="Segurança" icon="ui-icon-pencil"  >
+
+               <p:menuitem value="Meus Dados" />                    
+               <p:menuitem value="Logs"  /> 
+
+            </p:submenu>
+
+       </p:menubar>
+     
+
+      <div id="content" class="center_content">
+        <ui:insert name="content"> </ui:insert>
+      </div>
+         
+    </h:form>
+     
+     <p:layoutUnit position="south" size="100">
+                <ui:insert name="footer" >
+                           <div id="bottom">
+                            
+            <ui:insert name="bottom">
+                <div id="autoria" align="center" style="color: #2e6e9e">
+                    TFD -  TRATAMENTO FORA DE DOMICILIO<br/>
+                    <b>Protótipo de Sistema</b><br/>
+                    Desenvolvido por Rosiane dos Santos Nascimento<br/>
+                    Orientado por Thiago<br/>
+                    TCC - Trabalhado de Conclusão de Cursos <br/>
+                    IFNMG - Campus Januária <br/>
+                    Cursos Superior em Tecnologia em Análise e Desenvolvimento de Sistemas
+                    
+                                  
+                    
+                </div>
+            </ui:insert>
         </div>
+                    </ui:insert>        
+            </p:layoutUnit>
 
-    </h:body>
+
+  </h:body>
+
 </html>

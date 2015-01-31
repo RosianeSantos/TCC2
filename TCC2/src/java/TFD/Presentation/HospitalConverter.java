@@ -40,7 +40,7 @@ public class HospitalConverter implements Serializable, Converter{
      
      public List<Hospital> AutoCompleteHospitals (String query){
         Hospital filtro = new Hospital();
-        filtro.setNome(query);
+        filtro.setNomeHospital(query);
         return daoHospital.Buscar(filtro);
     }
      
@@ -50,7 +50,7 @@ public class HospitalConverter implements Serializable, Converter{
           return "";
       } else{
           Hospital h = (Hospital)value;
-          return h.getId().toString();
+          return h.getIdHospital().toString();
       } 
     }
 

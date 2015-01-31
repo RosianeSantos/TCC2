@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d30dc0a-0e9f-44dd-9063-0bf17aea4c4c">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFF0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="a85afdab-958d-49de-953c-14873e308efc"/>
+	<subDataset name="dataset2" uuid="e33634bb-92cd-4f85-bbd7-59a4b814f3b2"/>
+	<subDataset name="dataset3" uuid="3e8c12d3-cefb-46a0-8618-ba356833b54d"/>
+	<subDataset name="Table Dataset 1" uuid="d7ddc23d-518a-4dd4-a525-bbe08e21494d"/>
+	<parameter name="parametro" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+ h.nomeHospital, a.Clinicatr,p.nomePaciente,a.numeroTFD,p.enderecoPaciente,p.TelefoneR,e.nomeEspecialidade
+,p.numero
+From Agendamento a
+Inner Join Paciente p on (p.idPaciente = a.idPaciente)
+Inner Join Hospital h on (h.idHospital = a.idHospital)
+Inner Join Especialidade e on (e.IdEspecialidade = a.IdEspecialidade)]]>
+	</queryString>
+	<field name="nomeHospital" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Clinicatr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numeroTFD" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enderecoPaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TelefoneR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeEspecialidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="444" height="45" uuid="15794faa-2cd4-41a2-a27c-80abfeba6e81"/>
+				<textElement textAlignment="Justified">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ SECRETARIA DE ESTADO DA SAÚDE DE MINAS GERAIS
+SUPERINTENDÊNCIA OPERACIONAL DE SAÚDE
+CENTRO DE APOIO ASSISTENCIAL / COORDENADORIA DE ASSISTÊNCIA SUPLEMENTAR
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="59" width="350" height="20" uuid="a95ed45e-0072-4b99-a894-2cbf9639fdb3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE ATENDIMENTO – TRATAMENTO FORA DE DOMICÍLIO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="455" y="0" width="103" height="59" uuid="e2f029fb-071c-4885-8a22-e85549c202b0"/>
+				<imageExpression><![CDATA["C:\\Users\\Rosy\\Documents\\Faculdade\\TCC2\\TCC2\\src\\java\\TFD\\Presentation\\Relatorio\\tfd.gif.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="14" uuid="8b335c98-9e9f-4ef7-8aa7-81b959a29f29"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Para uso do órgão de destino ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="398" splitType="Stretch">
+			<staticText>
+				<reportElement x="320" y="0" width="65" height="20" uuid="37f0207a-5e8e-4c4d-b606-0092c38ac586"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[02- CLINICATR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="20" width="65" height="20" uuid="2a9471be-bdda-46f0-a04f-97332e529eea"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Clinicatr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="190" height="20" uuid="e9685b49-9b87-4804-a8d2-fa7dba50b952"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[01- NOME DA UNIDADE MEDICA ASSISTENCIAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="100" height="20" uuid="e1a5b2a4-537a-439e-965a-a63bf606a866"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeHospital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="51" width="100" height="20" uuid="22289ba9-9b2b-4748-a2e1-e8bc782371df"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[04- NOME DO PACIENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="71" width="100" height="20" uuid="12010cf5-d444-406e-82a2-a711aa45134b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomePaciente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="31d11da9-9cdd-4685-8c6d-f135ddd217f4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[03- TFD Nº]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="20" width="100" height="20" uuid="8278932c-2ce1-4003-8eee-89dc3829f1d5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroTFD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="51" width="100" height="20" uuid="12f878ca-2116-4d37-b66a-7d0aebdc9a90"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[05- PROCEDÊNCIA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="71" width="100" height="20" uuid="7ed6f299-39d0-4375-a66b-7eab53de68dc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeEspecialidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="420" y="103" width="116" height="22" uuid="750aa28e-c75a-4ef4-bef5-755c1c716673"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Para uso da Unidade Assistencial]]></text>
+			</staticText>
+			<line>
+				<reportElement x="8" y="102" width="528" height="1" uuid="6b99811a-fd04-4a36-b9e0-6d3042d9c1be"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="115" width="172" height="20" uuid="892bd481-42b1-4fc5-a0cf-d0d32e82ce2d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[08- TRATAMENTOS REALIZADOS (SÚMULA)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="148" width="428" height="1" uuid="869eb255-7dd5-4dbb-aa64-ab2bcc811677"/>
+			</line>
+			<line>
+				<reportElement x="0" y="169" width="428" height="1" uuid="d57b86a5-4b07-424d-927d-6d341548fe7d"/>
+			</line>
+			<line>
+				<reportElement x="0" y="186" width="428" height="1" uuid="946a4af7-2e85-477c-8702-99189a550c17"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="187" width="241" height="20" uuid="0390f629-3a6d-4b99-bc27-2283dd50cb65"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[09- NECESSIDADE DE COMPLEMENTAÇAO DE TRATAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="207" width="100" height="20" uuid="ec36f43c-f9e3-4b5b-867a-f1aa6b60ce62"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NESTA UNIDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="227" width="100" height="20" uuid="830983d4-3055-43af-b366-f024d2f3e7ff"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NO ÓRGÃO DE ORIGEM]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="145" y="207" width="17" height="14" uuid="4917d9fb-68f6-42c4-b46b-91a2172ad9ae"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="172" y="207" width="18" height="14" uuid="f812da3f-acf6-4f94-909c-8e875d23fd81"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="227" width="18" height="14" uuid="21882320-888c-459f-a011-e4dce44f9248"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="207" width="27" height="14" uuid="8f2ffa1f-b7c8-4c25-b2c1-e0f098bb3584"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="229" width="26" height="12" uuid="d278b754-a3c2-4e1a-b09f-b628bdc72630"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NÃO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="204" y="207" width="17" height="14" uuid="a306d6a9-b33b-43f0-9354-bc694837504c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="204" y="227" width="17" height="14" uuid="8809f68c-cc9e-4dd9-8589-a674fe7d3864"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="145" y="227" width="17" height="14" uuid="ceab3f60-c59b-492e-833c-15d42d9a6a78"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="207" width="17" height="14" uuid="185938c5-9fb6-4f9b-8767-fae8e3a5181e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="227" width="17" height="14" uuid="761a6d1a-8800-4c8f-bd31-be95c53f9c1c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="278" y="187" width="277" height="104" uuid="d77163f8-6573-40ac-8a74-5d8e000ddf7c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="278" y="187" width="130" height="20" uuid="ad3454b9-bdff-4d4b-8972-dc2229549112"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10- JUSTIFICATIVA DO RETORNO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="279" y="216" width="276" height="1" uuid="08488e46-c4c7-456b-a7c0-5762bda22ea6"/>
+			</line>
+			<line>
+				<reportElement x="279" y="229" width="276" height="1" uuid="779aab9b-f4c9-4b94-9855-7aee32d30ed9"/>
+			</line>
+			<line>
+				<reportElement x="278" y="246" width="277" height="1" uuid="ca8c75cb-780b-44f3-89d4-fb6352367d4b"/>
+			</line>
+			<staticText>
+				<reportElement x="279" y="271" width="63" height="20" uuid="4a0466ab-3c61-41e2-811d-b3227329c156"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RETORNAR EM:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="271" width="100" height="20" uuid="b16b8297-2951-4787-848f-027dc6b43be1"/>
+				<text><![CDATA[_____/______/______]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="281" width="121" height="20" uuid="38d494fc-eeb0-48a8-b4e8-c3d282ff2575"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11- OUTRAS OBSERVAÇÕES]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="311" width="555" height="1" uuid="c47db49b-0fb4-44f3-bd6e-329fd1b22d66"/>
+			</line>
+			<line>
+				<reportElement x="0" y="328" width="555" height="1" uuid="606cfb73-42ff-49ff-9d58-a07d8e00fd68"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="329" width="44" height="15" uuid="4705a1f0-c6de-4c3c-bd46-638430afa519"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[12- DATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="357" width="100" height="20" uuid="ee7695d6-f9b6-456f-ac28-3e6800123e9e"/>
+				<text><![CDATA[_____/______/______]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="145" y="329" width="410" height="69" uuid="6b2c9fa5-ff9c-4706-ba3c-04e7ea75637b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="145" y="329" width="275" height="20" uuid="f2bccb57-ccd9-490b-ac27-2b28ec3964c1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[13- CARIMBO – CREMENGE – ASSINATURA MÉDICO ASSISTENTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="436" y="8" width="80" height="20" uuid="17ef0758-23ad-44d8-b597-715230dfce69"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="518" y="8" width="40" height="20" uuid="f451d697-18dd-4cc0-b67f-19d71c2283c8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

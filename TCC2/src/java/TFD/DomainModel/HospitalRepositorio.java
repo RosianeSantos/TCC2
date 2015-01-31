@@ -6,10 +6,13 @@
 
 package TFD.DomainModel;
 
+import javax.ejb.Local;
+
 /**
  *
  * @author Rosy
  */
+@Local
 public interface HospitalRepositorio 
 extends Repositorio<Hospital>{
     

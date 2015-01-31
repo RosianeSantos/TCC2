@@ -32,7 +32,7 @@ and open the template in the editor.
 
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                         <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${especialidadeController.voltar()}" />
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${especialidadeController.cancelar()}" />
 
                         <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                          severity="alert" widgetVar="msgSalvar">
@@ -42,7 +42,7 @@ and open the template in the editor.
 
                         <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                          severity="alert" widgetVar="msgRemover">
-                            <p:commandButton ajax="false" value="SIM" action="${especialidadeController.apagar()}" />
+                            <p:commandButton ajax="false" value="SIM" action="${especialidadeController.excluir()}" />
                             <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
 
                         </p:confirmDialog>  

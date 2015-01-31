@@ -22,37 +22,32 @@ and open the template in the editor.
                     </f:facet>  
                     
                                 <h:outputLabel value="Nome*:" />
-                                <p:inputText size="35" value="${pacienteController.entidade.nome}" required="true" 
-                                             requiredMessage="O campo nome é de preenchimento obrigatório!" title="Nome" validator="#{pacienteController.validarEspacoEmBranco}"
-                                                     validatorMessage="O nome não pode conter numeros ou caracteres especiais!">
-                                            <f:validateRegex  pattern="^([A-Z,a-z, ,ã,á,à,â,ê,í,ú,õ,é,ü]){0,50}$" for="txtnome"/>
-
-                                 </p:inputText>
+                                <p:inputText size="35" value="${pacienteController.entidade.nome}" required="true" />
+                                             
 
                                 <h:outputLabel value="Endereco*:" />                    
-                                <p:inputText size="35" value="${pacienteController.entidade.endereco}" required="true" 
-                                 requiredMessage="O campo Endereco é de preenchimento obrigatório!" title="Endereco" validator="#{pacienteController.validarEspacoEmBranco}"/>
+                                <p:inputText size="35" value="${pacienteController.entidade.endereco}" required="true"/>
                         
                                     <h:outputLabel value="Complemento:" />
                                     <p:inputText size="35" value="${pacienteController.entidade.complemento}" required="true" />
                                  
                                  <h:outputLabel value="Numero*" />
                                  <p:inputText size="35" value="${pacienteController.entidade.numero}" required="true"
-                                              requiredMessage="O campo numero é de preenchimento obrigatorio!"   title="Numero" validator="#{pacienteController.validarEspacoEmBranco}"  />     
+                                               />     
 
                                  
                                  <h:outputLabel value="CEP*" />
                                  <p:inputMask id="Cep"  required="true" value="${pacienteController.entidade.cep}" mask="99.999-999" 
-                                              requiredMessage="O campo cep é de preenchimento obrigatorio!" title="Cep" validator="#{pacienteController.validarEspacoEmBranco}"/>
+                                             />
                                  
                                  <h:outputLabel value="Telefone Residencial:"/>
-                                 <p:inputMask id="TelefoneR" required="true" value="${pacienteController.entidade.telefoneR}" mask="(999)9999-9999" />
+                                 <p:inputMask id="TelefoneR" required="true" value="${pacienteController.entidade.telefoneR}" mask="(99)9999-9999" />
                                  
                                  <h:outputLabel value="Telefone Comercial:" />
-                                 <p:inputMask id="TelefoneC" required="true" value="${pacienteController.entidade.telefoneC}" mask="(999)9999-9999" />
+                                 <p:inputMask id="TelefoneC" required="true" value="${pacienteController.entidade.telefoneC}" mask="(99)9999-9999" />
                                  
                                  <h:outputLabel value="Telefone Celular:" />
-                                 <p:inputMask id="TelefoneCelular" required="true" value="${pacienteController.entidade.telefoneCelular}" mask="(999)9999-9999" />
+                                 <p:inputMask id="TelefoneCelular" required="true" value="${pacienteController.entidade.telefoneCelular}" mask="(99)9999-9999" />
                                  
                                   Sexo*:<br/>
                                   <p:selectOneMenu value="#{pacienteController.entidade.sexo}" label="Sexo"
@@ -64,12 +59,11 @@ and open the template in the editor.
                                   
                                   <h:outputLabel value="RG*" />
                                   <p:inputText size="35" value="${pacienteController.entidade.rg}" required="true"
-                                              requiredMessage="O campo RG é de preenchimento obrigatorio!"   title="rg" validator="#{pacienteController.validarEspacoEmBranco}"  /> 
+                                              /> 
                                   
                                   <h:outputLabel value="CPF*" />
                                   <p:inputMask id="CPF" value="${pacienteController.entidade.cpf}" required="true" mask="999.999.999-99"
-                                               requiredMessage="O campo CPF é de preenchimento obrigatorio!" title="cpf"  
-                                               validator="#{pacienteController.validaCPF}"/>
+                                               />
                                                
                                  
                 </h:panelGrid>
@@ -78,8 +72,8 @@ and open the template in the editor.
                 <br/><br/>
                 <p:panel id="Rodape">
                     <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
-                    <p:commandButton value="Remover" rendered="#{pacienteController.entidade.id > 0}" onclick="msgRemover.show()"/>
-                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${pacienteController.voltar()}" />
+                     <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+                    <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${pacienteController.cancelar()}" />
                 </p:panel>       
                 <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgSalvar">
@@ -89,7 +83,7 @@ and open the template in the editor.
 
                 <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                  severity="alert" widgetVar="msgRemover">
-                    <p:commandButton ajax="false" value="SIM" action="${pacienteController.apagar()}" />
+                    <p:commandButton ajax="false" value="SIM" action="${pacienteController.excluir()}" />
                     <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
 
                 </p:confirmDialog>  
