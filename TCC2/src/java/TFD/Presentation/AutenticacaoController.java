@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package TFD.Presentation;
 
-
-import TFD.DomainModel.Usuario;
-import TFD.DomainModel.UsuarioRepositorio;
-import java.io.IOException;
+import TFD.DataAcess.FuncionarioDAO;
+import TFD.DomainModel.Funcionario;
+import TFD.DomainModel.FuncionarioRepositorio;
 import java.io.Serializable;
 import java.util.Enumeration;
 import javax.ejb.EJB;
@@ -17,11 +15,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -31,99 +24,94 @@ import javax.servlet.http.HttpSession;
 @Named(value = "autenticacaoController")
 @SessionScoped
 public class AutenticacaoController
-         implements Serializable {
+        implements Serializable {
+
+    @EJB
+    FuncionarioRepositorio dao;
+
+    private String login, senha;
+    Funcionario funcionario;
 
     /**
      * Creates a new instance of AutenticacaoController
      */
     public AutenticacaoController() {
-         
-    }
-    
-    
-//       @EJB
-    UsuarioRepositorio dao;
-    private String login, senha;
-    Usuario usuario;
-    private EntityManagerFactory factory = Persistence.createEntityManagerFactory("TCC2PU");
-    private EntityManager em;
 
-  
-    
-    public void Mensagem(String msg) {
+        dao = new FuncionarioDAO();
+        funcionario = new Funcionario();
+//        login = new Funcionario();
+
+    }
+
+    public void exibirMensagem(String msg) {
+
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(msg));
     }
-    
-    public String validar() {
+
+    public String validar(){
+        String home = "TemplateUsuario.xhtml";
+        String adm = "Template.xhtml";
         try {
-        usuario = buscarUsuario(login,senha);
-
-        if (usuario == null) {
-            Mensagem("Login ou senha não correspondem!");
-            return "login.xhtml";
-        } else {
-            if (senha.equals(usuario.getSenha())) {
-
-                HttpSession session;
-
-                FacesContext ctx = FacesContext.getCurrentInstance();
-                session = (HttpSession) ctx.getExternalContext().getSession(false);
-                session.setAttribute("usuarioAutenticado", usuario);
-
-               // AppendLog("Login");
-
-                return "Template.xhtml";
-            } else {
-                Mensagem("Login ou senha não correspondem");
+            funcionario = dao.Validar(login);
+            if (funcionario == null) {
+                exibirMensagem("Login ou Senha não Correspondem!");
                 return "login.xhtml";
+            } 
+            else {
+                if (((funcionario.getNome().equals("administrador"))) && (funcionario.getIdFuncionario() == 2)) {
+                        HttpSession session;
+                        FacesContext ctx = FacesContext.getCurrentInstance();
+                        session = (HttpSession) ctx.getExternalContext().getSession(false);
+                        session.setAttribute("FuncionarioAutenticado", funcionario);
+                        exibirMensagem("Seja Bem Vindo" + funcionario.getNome() + "!");
+                        return adm;
+                    
+                }
+                else {
+                    HttpSession session;
+                    FacesContext ctx = FacesContext.getCurrentInstance();
+                    session = (HttpSession) ctx.getExternalContext().getSession(false);
+                    session.setAttribute("FuncionarioAutenticado", funcionario);
+                    exibirMensagem("Seja Bem Vindo" + funcionario.getNome() + "!");
+                    return home;
+                }
             }
-        }
-        } catch(Exception ex){
-            Mensagem("Login ou senha não correspondem");
+        }catch (Exception ex) {
+            exibirMensagem("Login ou Senhas Inválidos");
             return "login.xhtml";
-        }
-
+        }       
     }
+    
+
+    
+
+    
 
     public String logout() {
+
         HttpSession session;
 
         FacesContext ctx = FacesContext.getCurrentInstance();
         session = (HttpSession) ctx.getExternalContext().getSession(false);
-        session.setAttribute("usuarioAutenticado", null);
+        session.setAttribute("FuncionarioAutenticado", null);
 
-       // AppendLog("Logout");
-        
-        Enumeration<String> vals = session.getAttributeNames(); 
-        
-        while(vals.hasMoreElements()){
+        Enumeration<String> vals = session.getAttributeNames();
+
+        while (vals.hasMoreElements()) {
             session.removeAttribute(vals.nextElement());
         }
 
         return "login.xhtml";
-
     }
-    
-    public Usuario buscarUsuario(String login, String senha) {
-        em = factory.createEntityManager();
-        Usuario usuario = null;
-        try {
-            Query query = em.createQuery("SELECT u FROM Usuario u WHERE u.nome = :nome AND f.senha = :senha");
-            query.setParameter("login", login);
-            query.setParameter("senha", senha);
- 
-            usuario = (Usuario) query.getSingleResult();
- 
-        } catch (NoResultException e) {
-            System.out.println("DAO: Não foi encontrado resultado!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
- 
-        return usuario;
+
+    //---------
+    public FuncionarioRepositorio getDao() {
+        return dao;
+    }
+
+    public void setDao(FuncionarioRepositorio dao) {
+        this.dao = dao;
     }
 
     public String getLogin() {
@@ -142,17 +130,12 @@ public class AutenticacaoController
         this.senha = senha;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
-
-    
-   
-    
-    
 }

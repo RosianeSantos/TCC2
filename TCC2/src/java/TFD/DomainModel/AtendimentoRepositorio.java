@@ -8,14 +8,11 @@ package TFD.DomainModel;
 
 import javax.ejb.Local;
 
-
 /**
  *
  * @author Rosy
  */
 @Local
-public interface FuncionarioRepositorio 
-     extends Repositorio<Funcionario>
-     {
-    public Funcionario Validar(String login);
+public interface AtendimentoRepositorio  extends Repositorio<Atendimento> {
+    
 }

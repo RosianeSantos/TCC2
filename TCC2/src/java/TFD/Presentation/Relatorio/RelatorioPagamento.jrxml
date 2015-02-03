@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7f83d18e-892c-4334-beef-5c3b9571cb48">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[Select * From Agendamento A
+Inner Join Paciente p on (p.idPaciente = a.idPaciente)
+Inner Join Cidade c on (c.idCidade = a.idCidade)
+Inner Join Especialidade e on (e.idEspecialidade = a.idEspecialidade)
+Inner Join Hospital h on (h.idHospital = a.idHospital)]]>
+	</queryString>
+	<field name="idAgendamento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idFuncionario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idPaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idHospital" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idCidade" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IdEspecialidade" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Viagem" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Finalidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idCarro" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Acompanhante" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Situacao" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NumeroTFD" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Clinicatr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GRS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="municipioDestino" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Quantidade" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="valorTotal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idrecurso" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EnderecoPaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TelefonePaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomePaciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="complemento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefoneR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefoneC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefoneCelular" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeEspecialidade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomeHospital" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefone1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefone2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefone3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enderecoHospital" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="515" height="60" uuid="bf054985-88c2-4501-a451-5825be9d947a"/>
+				<textElement>
+					<font size="10" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[       SECRETARIA DE ESTADO DA SAÚDE DE MINAS GERAIS	
+SUPERINTENDENCIA OPERACIONAL DE SAÚDE				
+DIRETORIA DE REDES ASSISTENCIAIS	
+SECRETARIA MUNICIPAL DE SAÚDE E SANEAMENTO DE SÃO FRANCISCO – MG
+]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="471" y="0" width="84" height="22" uuid="89a74df0-7ab4-468e-89f9-c41ace966f48"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[01-Nº DE CONTROLE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="471" y="22" width="84" height="20" uuid="1729c62b-c437-4337-9b46-f35206d1af48"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idAgendamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="162" y="2" width="174" height="20" uuid="45c7c377-7e62-4bf0-a2ba-142eb29f4aad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO DE PAGAMENTO DE TFD]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="475" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="112" height="20" uuid="3ad5961c-d42d-45ad-a7db-0ce1c5c815cc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[02- NOME DO (A) PACIENTE ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="100" height="20" uuid="d64c6f8c-afcd-4424-b94b-de7a3a5c61c7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomePaciente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="126" y="0" width="100" height="20" uuid="ba38547e-e224-4883-9ae7-783ff55d0e42"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[03- Nº DA IDENTIDADE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="20" width="100" height="20" uuid="67a699fe-dc11-422f-8908-c1c2e39c236f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="0" width="76" height="20" uuid="eb709d7c-566c-477c-8988-8c5c3cb64380"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[04- Nº. DO CPF]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="20" width="100" height="20" uuid="2b6d5b1e-f07f-46c9-944c-6302bdb9f481"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="404" y="0" width="150" height="20" uuid="c33b0de4-a6c4-4587-a0b2-0b3d7da73eb6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[05- NOME DO (A) ACOMPANHANTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="404" y="20" width="100" height="20" uuid="d6afe50a-f314-4baa-900e-8041628347bc"/>
+				<textFieldExpression><![CDATA[$F{Acompanhante}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="52" width="112" height="20" uuid="4d143e92-d054-4154-b11a-09619935de89"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[06- MUNICIPIO DE ORIGEM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="52" width="119" height="20" uuid="ee9bab99-7142-4568-9056-b46207c360e7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[07- MUNICIPIO DE DESTINO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="52" width="89" height="20" uuid="b0043495-1de7-4b69-9c06-41e26650c86d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[08- GRS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="52" width="100" height="20" uuid="d1e0bd8d-3083-4b61-9746-9cf79da08bc4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[09- TFD Nº.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="72" width="100" height="20" uuid="f82977af-dc61-4b07-a4a2-01cb15f99762"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="72" width="119" height="20" uuid="3f0be22b-542c-475b-9d2f-0eb5a343bbe1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{municipioDestino}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="72" width="100" height="20" uuid="274fc620-414c-4210-852b-dd0078e0ff38"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="72" width="100" height="20" uuid="ea3fabaa-41e0-4cec-96b2-f4fe99ffaa6e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NumeroTFD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="107" width="100" height="20" uuid="5f9310f4-8f14-4adf-8226-106b2c401f17"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[10- ESPECIALIDADE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="127" width="100" height="20" uuid="b7924090-9cfd-4621-ae83-dfab484e88e1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeEspecialidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="126" y="107" width="110" height="20" uuid="d75d6cf0-cdce-4fc9-bc08-ea9eaeaf73a7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[11- UNIDADE ASSISTENCIAL ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="127" width="100" height="20" uuid="7eb84b04-65a3-4dcd-a892-d5ca72668105"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomeHospital}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="237" width="100" height="20" uuid="39648294-fcad-44d2-9bfc-94090498e443"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[17- AUTORIZAÇÃO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="257" width="100" height="20" uuid="0fd38e7e-4ff1-45fe-b78c-d70292c0c763"/>
+				<text><![CDATA[_____/______/______]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="237" width="394" height="20" uuid="045a0c2c-917c-4714-933c-5295b3ff04b7"/>
+				<text><![CDATA[--------------------------------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="257" width="268" height="20" uuid="8a1902a1-c831-45ab-b0de-9c0a450b46e3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ASSINATURA E CARIMBO DO RESPONSÁVEL PELO PAGAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="327" width="126" height="20" uuid="6af34527-c349-40d5-99f5-03e71d3993bd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[18- RECEBI A IMPORTÂNCIA DE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="435" width="100" height="20" uuid="adf59e2f-c29b-44aa-a17e-ec46a9eaa003"/>
+				<text><![CDATA[_____/______/______]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="327" width="428" height="20" uuid="c21594d9-b190-4df5-8e67-6d015d46270a"/>
+				<text><![CDATA[_________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="415" width="100" height="20" uuid="b38566f3-b65b-479b-877c-5005d39448b1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DATA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="435" width="394" height="20" uuid="6605addc-3156-4c95-9e6a-fb485b782627"/>
+				<text><![CDATA[-------------------------------------------------------------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="455" width="219" height="20" uuid="d2ef3112-3cf1-4d73-b2c3-a7e56c04f94d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ASSINATURA DO (A) PACIENTE OU RESPONSÁVEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="277" width="554" height="20" uuid="bdd590c3-fc23-4445-8526-427ab018c767"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[__________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="347" width="554" height="20" uuid="2c59d9fe-c1d8-43e7-82b0-e4cc406c7daf"/>
+				<text><![CDATA[_________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="203" width="554" height="20" uuid="27603fec-9aab-42ef-9c2b-6c5f5ed17683"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[__________________________________________________________________________________________________________]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="422" y="22" width="80" height="20" uuid="6537dffd-92f6-4285-b575-2af41c53b1b1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="502" y="22" width="40" height="20" uuid="19ac5948-4bed-4bac-947c-b800a9930bfc"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

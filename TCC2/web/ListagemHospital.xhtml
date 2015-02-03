@@ -26,7 +26,7 @@ and open the template in the editor.
                    </f:facet>  
 
                    <h:outputLabel value="Nome:" />
-                   <p:inputText value="${hospitalController.filtro.nome}"/>
+                   <p:inputText value="${hospitalController.filtro.nomeHospital}"/>
                    
                   
                    <f:facet name="footer">  
@@ -42,10 +42,10 @@ and open the template in the editor.
              
             <p:dataTable value="${hospitalController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
             <p:column sortBy="Nome" headerText="Nome">
-                ${item.nome}
+                ${item.nomeHospital}
             </p:column>
            <p:column sortBy="Endereço" headerText="Endereço">
-                ${item.endereco}
+                ${item.enderecoHospital}
             </p:column>
                 <p:column sortBy="Numero" headerText="Numero">
                 ${item.numero}

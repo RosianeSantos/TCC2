@@ -19,44 +19,30 @@ and open the template in the editor.
                 <h:form>
                     <h:panelGrid columns="2">  
                     <f:facet name="header">  
-                        HOSPITAL 
+                       CLINICAS
                     </f:facet>  
 
                        <h:outputLabel value="Nome*:" />                    
-                       <p:inputText size="30" value="#{hospitalController.entidade.nomeHospital}" required="true" />
-                         <h:outputLabel value="Endereco*:" />                    
-                         <p:inputText size="30" value="#{hospitalController.entidade.enderecoHospital}" required="true" />
-                        <h:outputLabel value="Numero*:" />                    
-                        <p:inputText size="30" value="#{hospitalController.entidade.numero}" required="true" />
-                        <h:outputLabel value="Complemento:" />                    
-                        <p:inputText size="30" value="#{hospitalController.entidade.complemento}"  />
-                         <h:outputLabel value="Telefone 1:" />                    
-                         <p:inputMask  id="Telefone1" value="#{hospitalController.entidade.telefone1}"  mask="(999)999-9999"/>
-                         <h:outputLabel value="Telefone 2:" />                    
-                        <p:inputMask  id="Telefone2" value="#{hospitalController.entidade.telefone2}"  mask="(999)999-9999"/>
-                         <h:outputLabel value="Telefone 3:" />                    
-                        <p:inputMask  id="Telefone3" value="#{hospitalController.entidade.telefone3}"  mask="(999)999-9999"/>
-
-                        
+                       <p:inputText size="30" value="#{clinicatrController.entidade.nomeClinicatr}" required="true" />
 
                       
 
-                        (*) Campos de Preenchimento Obrigatório 
+                        (*) Campos de Preenchimento Obrigatório
 
 
                         <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
                         <p:commandButton value="Remover" onclick="msgRemover.show()"/>
-                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${hospitalController.cancelar()}" />
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${clinicatrController.cancelar()}" />
 
                         <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
                                          severity="alert" widgetVar="msgSalvar">
-                            <p:commandButton ajax="false" value="SIM" action="#{hospitalController.salvar()}" />
+                            <p:commandButton ajax="false" value="SIM" action="#{clinicatrController.salvar()}" />
                             <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
                         </p:confirmDialog>
 
                         <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
                                          severity="alert" widgetVar="msgRemover">
-                            <p:commandButton ajax="false" value="SIM" action="${hospitalController.excluir()}" />
+                            <p:commandButton ajax="false" value="SIM" action="${clinicatrController.excluir()}" />
                             <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
 
                         </p:confirmDialog>  

@@ -6,10 +6,13 @@
 
 package TFD.Presentation;
 
-import TFD.DomainModel.Funcionario;
-import TFD.DomainModel.FuncionarioRepositorio;
+import TFD.DomainModel.Atendimento;
+import TFD.DomainModel.AtendimentoRepositorio;
+import TFD.DomainModel.Clinicatr;
+import TFD.DomainModel.Especialidade;
+import TFD.DomainModel.Hospital;
+import TFD.DomainModel.Paciente;
 import java.io.Serializable;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -22,19 +25,34 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "funcionarioController")
+@Named(value = "atendimentoController")
 @SessionScoped
-public class FuncionarioController extends ControllerGenerico<Funcionario> implements Serializable {
-
+public class AtendimentoController extends ControllerGenerico<Atendimento>  implements Serializable {
+    
+//        Hospital hospital;
+//        Clinicatr clinicatr;
+//        Especialidade especialidade;
+//        Paciente  paciente;
+//    
      @EJB
-    FuncionarioRepositorio dao;
+     AtendimentoRepositorio dao;
     
-    
-    public FuncionarioController() {
-        entidade = new Funcionario();
-        filtro = new Funcionario();
+
+    /**
+     * Creates a new instance of FuncionarioController
+     */
+    public AtendimentoController() {
+        entidade = new Atendimento();
+        filtro = new Atendimento();
+//        hospital = new Hospital();
+//        clinicatr = new Clinicatr();
+//        especialidade = new Especialidade();
+//        paciente = new Paciente();
     }
 
+    /**
+     *
+     */
     
      public void validarEspacoEmBranco(FacesContext contexto, UIComponent componente, Object valor) {
         String valorString = (String) valor;
@@ -49,49 +67,46 @@ public class FuncionarioController extends ControllerGenerico<Funcionario> imple
     }
     
     
-//    public void exibirMensagem(String msg) {
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        context.addMessage(null, new FacesMessage(msg));
-//    } 
+    public void exibirMensagem(String msg) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(msg));
+    } 
 
-     
-     
     /**
      *
      Criando o Metodo de salvar */
-    public void salvar() {
+   public void salvar() {
         if(dao.Salvar(entidade)){
             listagem = null; 
-        } else {
-            //mensagem de erro
-        }
+            exibirMensagem("Operação realizada com Sucesso!");
+        } 
     }
 
    
     public String editar() {
-        return "Funcionario.xhtml";
+        return "Atendimento.xhtml";
     }
     
    
     public String novo(){
-        entidade = new Funcionario();
-        return "Funcionario.xhtml";
+        entidade = new Atendimento();
+        return "Atendimento.xhtml";
     }
     
     @Override
     public String abrir() {
-        return "Funcionario.xhtml";
+        return "Atendimento.xhtml";
     }
 
    
     public String criar() {
-        entidade = new Funcionario();
-        return "ListagemFuncionario.xhtml";
+        entidade = new Atendimento();
+        return "ListagemAtendimento.xhtml";
     }
 
     @Override
     public String cancelar() {
-        return "ListagemFuncionario.xhtml";
+        return "ListagemAtendimento.xhtml";
     }
    
     @Override
@@ -110,19 +125,8 @@ public class FuncionarioController extends ControllerGenerico<Funcionario> imple
         listagem = dao.Buscar(filtro);
     }
 
-    
-//    public String voltar() {
-//        lista = null;
-//        return "EspecialidadeListar.xhtml";
-//    }
-    
    
     
-     public FuncionarioRepositorio getDao() {
-        return dao;
-    }
-
-    public void setDao(FuncionarioRepositorio dao) {
-        this.dao = dao;
-    }
+      
+    
 }

@@ -6,10 +6,11 @@
 
 package TFD.Presentation;
 
-import TFD.DomainModel.Funcionario;
-import TFD.DomainModel.FuncionarioRepositorio;
+import TFD.DomainModel.Clinicatr;
+import TFD.DomainModel.ClinicatrRepositorio;
+import TFD.DomainModel.Especialidade;
+import TFD.DomainModel.EspecialidadeRepositorio;
 import java.io.Serializable;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -22,17 +23,18 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "funcionarioController")
+@Named(value = "clinicatrController")
 @SessionScoped
-public class FuncionarioController extends ControllerGenerico<Funcionario> implements Serializable {
-
+public class ClinicatrController extends ControllerGenerico<Clinicatr> implements Serializable {
+    
+    
      @EJB
-    FuncionarioRepositorio dao;
+     ClinicatrRepositorio dao;
     
     
-    public FuncionarioController() {
-        entidade = new Funcionario();
-        filtro = new Funcionario();
+    public ClinicatrController() {
+        entidade = new Clinicatr();
+        filtro = new Clinicatr();
     }
 
     
@@ -69,29 +71,29 @@ public class FuncionarioController extends ControllerGenerico<Funcionario> imple
 
    
     public String editar() {
-        return "Funcionario.xhtml";
+        return "Clinicatr.xhtml";
     }
     
    
     public String novo(){
-        entidade = new Funcionario();
-        return "Funcionario.xhtml";
+        entidade = new Clinicatr();
+        return "Clinicatr.xhtml";
     }
     
     @Override
     public String abrir() {
-        return "Funcionario.xhtml";
+        return "Clinicatr.xhtml";
     }
 
    
     public String criar() {
-        entidade = new Funcionario();
-        return "ListagemFuncionario.xhtml";
+        entidade = new Clinicatr();
+        return "ListagemClinicatr.xhtml";
     }
 
     @Override
     public String cancelar() {
-        return "ListagemFuncionario.xhtml";
+        return "ListagemClinicatr.xhtml";
     }
    
     @Override
@@ -118,11 +120,11 @@ public class FuncionarioController extends ControllerGenerico<Funcionario> imple
     
    
     
-     public FuncionarioRepositorio getDao() {
+     public ClinicatrRepositorio getDao() {
         return dao;
     }
 
-    public void setDao(FuncionarioRepositorio dao) {
+    public void setDao(ClinicatrRepositorio dao) {
         this.dao = dao;
     }
 }

@@ -22,16 +22,16 @@ and open the template in the editor.
               <p:panelGrid columns="2" style="color: blue">
                     
                    <f:facet name="header">  
-                     <h2 style="font: medium; color: blue"> Filtros - Especialidade </h2>   
+                     <h2 style="font: medium; color: blue"> Filtros - Clinicas </h2>   
                    </f:facet>  
 
                    <h:outputLabel value="Nome:" />
-                   <p:inputText value="${especialidadeController.filtro.nomeEspecialidade}"/>
+                   <p:inputText value="${clinicatrController.filtro.nomeClinicatr}"/>
                    
                   
                    <f:facet name="footer">  
-                       <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${especialidadeController.filtrar()}" style="margin:0"/>  
-                       <p:commandButton ajax="false" value="Nova Especialidade" action="${especialidadeController.novo}" />
+                       <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${clinicatrController.filtrar()}" style="margin:0"/>  
+                       <p:commandButton ajax="false" value="Nova Clinica" action="${clinicatrController.novo}" />
                    </f:facet>
                    
              </p:panelGrid>
@@ -40,14 +40,14 @@ and open the template in the editor.
             <br/>
               
              
-            <p:dataTable value="${especialidadeController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:dataTable value="${clinicatrController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
             <p:column sortBy="Nome" headerText="Nome">
-                ${item.nomeEspecialidade}
+                ${item.nomeClinicatr}
             </p:column>
            
             <p:column headerText="Editar">
-                <p:commandButton value="Editar" ajax="false" action="${especialidadeController.abrir}">
-                    <f:setPropertyActionListener target="${especialidadeController.entidade}" value="${item}" />
+                <p:commandButton value="Editar" ajax="false" action="${clinicatrController.editar()}">
+                    <f:setPropertyActionListener target="${clinicatrController.entidade}" value="${item}" />
                 </p:commandButton>
             </p:column>
               

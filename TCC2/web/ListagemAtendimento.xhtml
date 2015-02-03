@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+           <ui:define name="content">
+             <br/>  
+              <center>
+             
+              <p:panelGrid columns="2" style="color: blue">
+                    
+                   <f:facet name="header">  
+                     <h2 style="font: medium; color: blue"> Filtros-Atendimento </h2>   
+                   </f:facet>  
+
+                   <h:outputLabel value="Paciente:" />
+                   <p:selectOneMenu value="${atendimentoController.filtro.paciente}" label="Paciente" 
+                                    converter="${pacienteConverter}" required="false" >
+                       <f:selectItem itemLabel="Selecione..." itemValue=""/>
+                       <f:selectItems value="${pacienteController.listagem}" />
+                       
+                   </p:selectOneMenu>
+                   
+                  
+                   <f:facet name="footer">  
+                       <p:commandButton ajax="false" value="Filtrar" icon="ui-icon-check" action="${atendimentoController.filtrar()}" style="margin:0"/>  
+                       <p:commandButton ajax="false" value="Novo Atendimento" action="${atendimentoController.novo}" />
+                   </f:facet>
+                   
+             </p:panelGrid>
+            </center>
+            <br/>
+            <br/>
+              
+             
+            <p:dataTable value="${atendimentoController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
+            <p:column sortBy="Nome" headerText="Unidade Médica">
+                ${item.Hospital}
+            </p:column>
+            <p:column sortBy="Paciente" headerText="Paciente">
+                ${item.Paciente}
+            </p:column>
+             <p:column sortBy="Clinicas" headerText="Clinicas">
+                ${item.Clinicatr}
+            </p:column>
+               <p:column sortBy="Especialidade" headerText="Procedencia">
+                ${item.Especialidade}
+            </p:column>
+           
+            <p:column headerText="Editar">
+                <p:commandButton value="Editar" ajax="false" action="${atendimentoControllerer.abrir}">
+                    <f:setPropertyActionListener target="${atendimentoController.entidade}" value="${item}" />
+                </p:commandButton>
+            </p:column>
+              
+          </p:dataTable>
+
+          
+        </ui:define>
+
+      </ui:composition>
+
+    </body>
+</html>

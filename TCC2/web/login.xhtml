@@ -7,49 +7,44 @@
       xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
+         <ui:composition template="./TemplateExterno.xhtml">
 
-        <ui:composition template="./TemplateExterno.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <div align="center">
+                        <p:messages autoUpdate="true"  />
+                        <p:panel header="Login" style="width: 40%; font: medium; color: blue"/>
 
-          <ui:define name="content">
-             <h:form>
-              <div align="center">
-                <p:messages autoUpdate="true"  />
-                 <p:panel header="Login" style="width: 40%; font: medium; color: blue"/>
-                
-            
-                <p:growl id="growl" showDetail="true" sticky="true" />   
 
-                <p:panelGrid columns="1" style="width: 40%" >  
-                 
-                    <h:outputLabel value="Usuário*:" />
-                    <p:inputText value="#{autenticacaoController.login}"  size="50" label="Firstname"/>  
+                        <p:growl id="growl" showDetail="true" sticky="true" />   
 
-                    <h:outputLabel value="Senha*:" /> 
-                    <p:password label="senha" size="26" value="#{autenticacaoController.senha}" />
-                    
-                    
+                        <p:panelGrid columns="1" style="width: 40%" >  
 
-                </p:panelGrid>
-                
-                
-                <p:panel id="Rodape" style="width: 40%" >
-                
-                    <p:commandButton value="Entrar"  action="#{autenticacaoController.validar()}" /> <br/> 
-                    <p:commandLink  value="Cadastrar Usuário"  immediate="true" action="${usuarioController.novo()}"/>                
-                    <p:commandLink value="Esqueci a Senha" immediate="true" action="${usuarioController.novaSenha()}"/> 
-                            
-                    
-                </p:panel>  
-                
-                
-                
-                  
-            </div>
-                 
-          </h:form>
-        </ui:define>
+                            <h:outputLabel value="Usuário*:" />
+                            <p:inputText value="#{autenticacaoController.login}"  size="50" label="Firstname"/>  
 
+                            <h:outputLabel value="Senha*:" /> 
+                            <p:password label="senha" size="26" value="#{autenticacaoController.senha}" />
+
+
+
+                        </p:panelGrid>
+
+
+                        <p:panel id="Rodape" style="width: 40%" >
+
+                            <p:commandButton value="Entrar"  action="#{autenticacaoController.validar()}" /> <br/> 
+                            <p:commandLink  value="Cadastrar Usuário"  immediate="true" action="${usuarioController.novo()}"/>                
+                            <p:commandLink value="Esqueci a Senha" immediate="true" action="${usuarioController.novaSenha()}"/> 
+
+
+                        </p:panel>  
+                    </div>
+
+                </h:form>
+            </ui:define>
         </ui:composition>
+
 
     </body>
 </html>

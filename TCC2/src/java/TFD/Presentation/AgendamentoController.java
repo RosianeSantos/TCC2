@@ -21,7 +21,7 @@ import javax.inject.Named;
  *
  * @author Rosy
  */
-@Named(value = "agendamentoReciboController")
+@Named(value = "agendamentoController")
 @SessionScoped
 public class AgendamentoController extends ControllerGenerico<Agendamento>  implements Serializable {
     

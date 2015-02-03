@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">  
+                    <f:facet name="header">  
+                        Atendimento
+                    </f:facet>  
+                        
+                         <h:outputLabel value="Nome da Unidade Médica*:" />           
+                            <p:selectOneMenu value="${atendimentoController.entidade.hospital}" label="Hospital"
+                                             converter="${hospitalConverter}" required="true" >
+                                <f:selectItem itemLabel="Selecione..." itemValue="" />
+                                <f:selectItems value="${hospitalController.listagem}"/>
+
+                            </p:selectOneMenu>
+                         
+                         <h:outputLabel value="Nome do Paciente*:" />           
+                         <p:selectOneMenu value="${atendimentoController.entidade.paciente}" label="Paciente"
+                                          converter="${pacienteConverter}" required="true" >
+                                <f:selectItem itemLabel="Selecione..." itemValue="" />
+                                <f:selectItems value="${pacienteController.listagem}"/>
+
+                            </p:selectOneMenu>
+                         
+                         <h:outputLabel value="Clinicas*:" />           
+                         <p:selectOneMenu value="${atendimentoController.entidade.clinicatr}" label="Clinicatr"
+                                          converter="${clinicatrConverter}" required="true" >
+                                <f:selectItem itemLabel="Selecione..." itemValue="" />
+                                <f:selectItems value="${clinicatrController.listagem}"/>
+
+                            </p:selectOneMenu>
+                         
+                         <h:outputLabel value="Procedencia*:" />           
+                         <p:selectOneMenu value="${atendimentoController.entidade.especialidade}" label="Especialidade"
+                                          converter="${especialidadeConverter}" required="true" >
+                                <f:selectItem itemLabel="Selecione..." itemValue="" />
+                                <f:selectItems value="${especialidadeController.listagem}"/>
+
+                            </p:selectOneMenu>
+                     
+                       
+                        (*) Campos de Preenchimento Obrigatório
+
+
+                        <p:commandButton value="Salvar" onclick="msgSalvar.show()" />
+                        <p:commandButton value="Remover" onclick="msgRemover.show()"/>
+                        <p:commandButton value="Cancelar" ajax="false" immediate="true" action="${atendimentoController.cancelar()}" />
+
+                        <p:confirmDialog id="confirmaSalvar" message="Deseja realmente Salvar os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgSalvar">
+                            <p:commandButton ajax="false" value="SIM" action="#{atendimentoController.salvar()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgSalvar.hide()" />                    
+                        </p:confirmDialog>
+
+                        <p:confirmDialog id="confirmaRemover" message="Deseja realmente Remover os Dados?" header="Confirmação"
+                                         severity="alert" widgetVar="msgRemover">
+                            <p:commandButton ajax="false" value="SIM" action="${atendimentoController.excluir()}" />
+                            <p:commandButton ajax="false" value="NÃO" onclick="msgRemover.hide()" />
+
+                        </p:confirmDialog>  
+
+
+
+                    </h:panelGrid>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
