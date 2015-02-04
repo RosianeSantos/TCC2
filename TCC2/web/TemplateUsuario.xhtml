@@ -22,6 +22,10 @@ and open the template in the editor.
 
     <h:body>
 
+         <div id="top"> 
+             <img  src="./resources/imagens/Logo_2.png" style="width: 100%; height: 250px"/>
+ 
+          </div>   
           <h:form> 
          <p:growl id="growl" showDetail="true" sticky="true" />
          
@@ -54,12 +58,19 @@ and open the template in the editor.
 
             </p:submenu>
 
+        <p:menuitem value="Sair" icon="ui-icon-pencil" action="#{autenticacaoController.logout()}" />
+
        </p:menubar>
      
-
-      <div id="content" class="center_content">
+         <div id="content" class="center_content">
         <ui:insert name="content"> </ui:insert>
       </div>
+       
+      <p:confirmDialog message="Sua sessão ficou ociosa por mais de 5 minutos e você foi desconectado automaticamente. Por favor efetue login novamente."  
+                                 header="Aviso" severity="alert" widgetVar="msgIdle">  
+          <p:commandButton ajax="false" value="Login" action="#{usuarioController.logout}"  />  
+      </p:confirmDialog>
+
          
     </h:form>
      

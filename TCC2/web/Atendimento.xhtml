@@ -22,33 +22,35 @@ and open the template in the editor.
                         Atendimento
                     </f:facet>  
                         
+                        
+                       
                          <h:outputLabel value="Nome da Unidade Médica*:" />           
-                            <p:selectOneMenu value="${atendimentoController.entidade.hospital}" label="Hospital"
-                                             converter="${hospitalConverter}" required="true" >
+                         <p:selectOneMenu value="${atendimentoController.entidade.Hospital}" label="Hospital" 
+                                          converter="${hospitalConverter}" required="true">
                                 <f:selectItem itemLabel="Selecione..." itemValue="" />
                                 <f:selectItems value="${hospitalController.listagem}"/>
 
                             </p:selectOneMenu>
                          
                          <h:outputLabel value="Nome do Paciente*:" />           
-                         <p:selectOneMenu value="${atendimentoController.entidade.paciente}" label="Paciente"
-                                          converter="${pacienteConverter}" required="true" >
+                         <p:selectOneMenu value="${atendimentoController.entidade.Paciente}" label="Paciente" 
+                                          converter="${pacienteConverter}" required="true">
                                 <f:selectItem itemLabel="Selecione..." itemValue="" />
                                 <f:selectItems value="${pacienteController.listagem}"/>
 
                             </p:selectOneMenu>
                          
                          <h:outputLabel value="Clinicas*:" />           
-                         <p:selectOneMenu value="${atendimentoController.entidade.clinicatr}" label="Clinicatr"
-                                          converter="${clinicatrConverter}" required="true" >
+                         <p:selectOneMenu value="${atendimentoController.entidade.Clinicatr}" label="Clinicatr"
+                                          converter="${clinicatrConverter}" required="true">
                                 <f:selectItem itemLabel="Selecione..." itemValue="" />
                                 <f:selectItems value="${clinicatrController.listagem}"/>
 
                             </p:selectOneMenu>
                          
                          <h:outputLabel value="Procedencia*:" />           
-                         <p:selectOneMenu value="${atendimentoController.entidade.especialidade}" label="Especialidade"
-                                          converter="${especialidadeConverter}" required="true" >
+                         <p:selectOneMenu value="${atendimentoController.entidade.Especialidade}" label="Especialidade"
+                                          converter="${especialidadeConverter}" required="true">
                                 <f:selectItem itemLabel="Selecione..." itemValue="" />
                                 <f:selectItems value="${especialidadeController.listagem}"/>
 

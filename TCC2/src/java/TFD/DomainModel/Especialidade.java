@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -19,6 +20,8 @@ import javax.persistence.Id;
 @Entity
 public class Especialidade implements Entidade, Serializable{
     
+   
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +29,9 @@ public class Especialidade implements Entidade, Serializable{
     
     private String nomeEspecialidade;
 
+    
+    
+    
     
     
     

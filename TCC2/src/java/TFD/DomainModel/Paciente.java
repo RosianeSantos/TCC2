@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import org.hibernate.validator.constraints.br.CPF;
 /**
  *
@@ -20,6 +21,9 @@ import org.hibernate.validator.constraints.br.CPF;
 @Entity
 
 public class Paciente implements Entidade,  Serializable {
+    
+    
+    
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,6 +48,8 @@ public class Paciente implements Entidade,  Serializable {
     @CPF
     private String cpf;
 
+    
+    
     
     
     public Long getIdPaciente() {

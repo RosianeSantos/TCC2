@@ -34,7 +34,7 @@ public class AtendimentoConverter implements Serializable, Converter{
      
      public List<Atendimento> AutoCompleteAtendimento (String query){
         Atendimento filtro = new Atendimento();
-//        filtro.setPaciente(query);
+        filtro.setNome(query);
         return daoAtendimento.Buscar(filtro);
     }
      

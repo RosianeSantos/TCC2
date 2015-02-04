@@ -33,22 +33,28 @@ public class AtendimentoDAO extends DAOGenerico<Atendimento> implements Atendime
         
         if(obj != null){
             if(obj.getIdAtendimento()!= null && obj.getIdAtendimento()> 0 ){ 
-                filtros += "at.idAtendimento = " + obj.getIdAtendimento();
+                filtros += "at.Atendimento.idAtendimento = " + obj.getIdAtendimento();
             }
             
            
         if(obj.getHospital()!= null){
                 if(filtros.length() > 0)
                     filtros += " and ";
-                filtros += "at.hospital like '%" + obj.getHospital()+ "%'"; 
+                filtros += "at.Hospital like '%" + obj.getHospital()+ "%'"; 
             }
         
          if(obj.getPaciente()!= null){
                 if(filtros.length() > 0)
                     filtros += " and ";
-                filtros += "at.paciente like '%" + obj.getPaciente()+ "%'"; 
+                filtros += "at.Paciente like '%" + obj.getPaciente()+ "%'"; 
             }
         
+         if(obj.getClinicatr()!= null){
+                if(filtros.length() > 0)
+                    filtros += " and ";
+                filtros += "at.Clinicatr like '%" + obj.getClinicatr()+ "%'"; 
+            }
+         
         }
         
         if(filtros.length() > 0){

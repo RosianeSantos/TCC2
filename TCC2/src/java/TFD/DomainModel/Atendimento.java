@@ -7,19 +7,15 @@
 package TFD.DomainModel;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -35,46 +31,38 @@ public class Atendimento implements Entidade, Serializable{
     @Column(name = "idAtendimento")
     private Integer idAtendimento;
     
-  
-    @OneToMany()
+    
+    private String nome;
+    
+    @JoinColumn(name = "idHospital", referencedColumnName = "idHospital")
+    @OneToOne
     private Hospital Hospital;
     
-    @OneToMany()
+    @JoinColumn(name = "idPaciente", referencedColumnName = "idPaciente")
+    @OneToOne
     private Paciente Paciente;
      
-    @OneToMany()
+    @JoinColumn(name = "idClinicatr", referencedColumnName = "idClinicatr")
+    @OneToOne
     private Clinicatr Clinicatr;
     
    
-    @OneToMany()
+    @JoinColumn(name = "idEspecialidade", referencedColumnName = "idEspecialidade")
+    @OneToOne
     private Especialidade Especialidade;
 
-//     @ManyToMany(cascade= CascadeType.ALL) 
-//    private List<Endereco> endereco;  
-//     
-//     public Atendimento() {
-//        this.endereco = new ArrayList<>();
-//        
-//    }
-//     
-     
-//       public void addEndereco(Endereco e){         
-//          if(endereco == null)
-//            endereco = new ArrayList<>();
-//        if(!endereco.contains(e)){
-//            endereco.add(e);
-//        }
-//        
-//    }
-//    
-//    public void removeEndereco(Endereco e){
-//        if(endereco.contains(e)){
-//            endereco.remove(e);
-//        }
-//    }
     
-    // Getter e Setter
     
+    
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     
     public Integer getIdAtendimento() {
         return idAtendimento;
@@ -116,15 +104,8 @@ public class Atendimento implements Entidade, Serializable{
         this.Especialidade = Especialidade;
     }
 
-
-//     public List<Endereco> getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(List<Endereco> endereco) {
-//        this.endereco = endereco;
-//    }
-//    
+   
+       
     
     @Override
     public Long getId() {

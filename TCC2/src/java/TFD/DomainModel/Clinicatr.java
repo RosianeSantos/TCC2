@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -18,6 +19,8 @@ import javax.persistence.Id;
  */
 @Entity
 public class Clinicatr implements Entidade, Serializable {
+  
+   
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -26,6 +29,13 @@ public class Clinicatr implements Entidade, Serializable {
     
     private String nomeClinicatr;
 
+    
+    
+    
+    
+    
+    
+    
     public Long getIdClinicatr() {
         return idClinicatr;
     }

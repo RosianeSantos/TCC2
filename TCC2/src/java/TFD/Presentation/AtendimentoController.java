@@ -9,10 +9,15 @@ package TFD.Presentation;
 import TFD.DomainModel.Atendimento;
 import TFD.DomainModel.AtendimentoRepositorio;
 import TFD.DomainModel.Clinicatr;
+import TFD.DomainModel.ClinicatrRepositorio;
 import TFD.DomainModel.Especialidade;
+import TFD.DomainModel.EspecialidadeRepositorio;
 import TFD.DomainModel.Hospital;
+import TFD.DomainModel.HospitalRepositorio;
 import TFD.DomainModel.Paciente;
+import TFD.DomainModel.PacienteRepositorio;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -29,13 +34,26 @@ import javax.inject.Named;
 @SessionScoped
 public class AtendimentoController extends ControllerGenerico<Atendimento>  implements Serializable {
     
-//        Hospital hospital;
-//        Clinicatr clinicatr;
-//        Especialidade especialidade;
-//        Paciente  paciente;
-//    
-     @EJB
+//      List<Hospital>listagemHospitals;
+//      List<Clinicatr> listagemClinicatrs;
+//      List<Especialidade> listagemEspecialidades;
+//      List<Paciente> listagemPacientes;
+
+    @EJB
      AtendimentoRepositorio dao;
+    
+//    @EJB
+//     HospitalRepositorio daoHospital;
+//    
+//    @EJB
+//      ClinicatrRepositorio daoClinicatr;
+//    
+//    @EJB
+//      EspecialidadeRepositorio daoEspecialidade;
+//    
+//    @EJB
+//      PacienteRepositorio daoPaciente;
+    
     
 
     /**
@@ -78,8 +96,9 @@ public class AtendimentoController extends ControllerGenerico<Atendimento>  impl
    public void salvar() {
         if(dao.Salvar(entidade)){
             listagem = null; 
-            exibirMensagem("Operação realizada com Sucesso!");
-        } 
+        } else {
+            //mensagem de erro
+        }
     }
 
    
@@ -125,7 +144,69 @@ public class AtendimentoController extends ControllerGenerico<Atendimento>  impl
         listagem = dao.Buscar(filtro);
     }
 
-   
+    public AtendimentoRepositorio getDao() {
+        return dao;
+    }
+
+    public void setDao(AtendimentoRepositorio dao) {
+        this.dao = dao;
+    }
+
+    
+    
+    
+//    public List<Hospital> getListagemHospitals() {
+//        
+//        if (listagemHospitals == null) {
+//            Atendimento filtro = new Atendimento();
+//            listagemHospitals = daoHospital.Buscar(null);
+//        }       
+//        return listagemHospitals;
+//    }
+//
+//    public void setListagemHospitals(List<Hospital> listagemHospitals) {
+//        this.listagemHospitals = listagemHospitals;
+//    }
+//
+//    
+//    public List<Clinicatr> getListagemClinicatrs() {
+//        if (listagemClinicatrs == null) {
+//            Atendimento filtro = new Atendimento();
+//            listagemClinicatrs = daoClinicatr.Buscar(null);
+//        }   
+//        return listagemClinicatrs;
+//    }
+//
+//    public void setListagemClinicatrs(List<Clinicatr> listagemClinicatrs) {
+//        this.listagemClinicatrs = listagemClinicatrs;
+//    }
+//
+//    public List<Especialidade> getListagemEspecialidades() {
+//        if (listagemEspecialidades == null) {
+//            Atendimento filtro = new Atendimento();
+//            listagemEspecialidades = daoEspecialidade.Buscar(null);
+//        }   
+//        return listagemEspecialidades;
+//    }
+//
+//    public void setListagemEspecialidades(List<Especialidade> listagemEspecialidades) {
+//        this.listagemEspecialidades = listagemEspecialidades;
+//    }
+//
+//    public List<Paciente> getListagemPacientes() {
+//        if (listagemPacientes == null) {
+//            Atendimento filtro = new Atendimento();
+//            listagemPacientes = daoPaciente.Buscar(null);
+//        }   
+//        return listagemPacientes;
+//    }
+//
+//    public void setListagemPacientes(List<Paciente> listagemPacientes) {
+//        this.listagemPacientes = listagemPacientes;
+//    }
+//
+//   
+    
     
       
     

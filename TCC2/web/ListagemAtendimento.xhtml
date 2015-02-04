@@ -26,8 +26,8 @@ and open the template in the editor.
                    </f:facet>  
 
                    <h:outputLabel value="Paciente:" />
-                   <p:selectOneMenu value="${atendimentoController.filtro.paciente}" label="Paciente" 
-                                    converter="${pacienteConverter}" required="false" >
+                   <p:selectOneMenu value="${atendimentoController.filtro.paciente}" label="Paciente"
+                                   converter="${pacienteConverter}" required="true" >
                        <f:selectItem itemLabel="Selecione..." itemValue=""/>
                        <f:selectItems value="${pacienteController.listagem}" />
                        
@@ -47,20 +47,20 @@ and open the template in the editor.
              
             <p:dataTable value="${atendimentoController.listagem}" var="item" emptyMessage="Registros não Encontrados!">
             <p:column sortBy="Nome" headerText="Unidade Médica">
-                ${item.Hospital}
+                ${item.hospital}
             </p:column>
             <p:column sortBy="Paciente" headerText="Paciente">
-                ${item.Paciente}
+                ${item.paciente}
             </p:column>
              <p:column sortBy="Clinicas" headerText="Clinicas">
-                ${item.Clinicatr}
+                ${item.clinicatr}
             </p:column>
                <p:column sortBy="Especialidade" headerText="Procedencia">
-                ${item.Especialidade}
+                ${item.especialidade}
             </p:column>
            
             <p:column headerText="Editar">
-                <p:commandButton value="Editar" ajax="false" action="${atendimentoControllerer.abrir}">
+                <p:commandButton value="Editar" ajax="false" action="${atendimentoController.abrir}">
                     <f:setPropertyActionListener target="${atendimentoController.entidade}" value="${item}" />
                 </p:commandButton>
             </p:column>

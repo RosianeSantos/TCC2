@@ -55,13 +55,22 @@ and open the template in the editor.
                <p:menuitem value="Logs"  /> 
 
             </p:submenu>
+             
+             
+              <p:menuitem value="Sair" icon="ui-icon-pencil" action="#{autenticacaoController.logout()}" />
 
        </p:menubar>
      
-
-      <div id="content" class="center_content">
+         <div id="content" class="center_content">
         <ui:insert name="content"> </ui:insert>
       </div>
+       
+      <p:confirmDialog message="Sua sessão ficou ociosa por mais de 5 minutos e você foi desconectado automaticamente. Por favor efetue login novamente."  
+                                 header="Aviso" severity="alert" widgetVar="msgIdle">  
+          <p:commandButton ajax="false" value="Login" action="#{usuarioController.logout}"  />  
+      </p:confirmDialog>
+
+      
          
     </h:form>
      
